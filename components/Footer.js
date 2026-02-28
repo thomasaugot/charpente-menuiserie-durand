@@ -147,7 +147,7 @@ const Footer = () => {
                 Politique de Confidentialité
               </a>
               <a
-                href="/conditions-generales-dutilisation"
+                href="/conditions-generales-utilisation"
                 className={`${dosisFont.className} text-sm text-lightGrey hover:text-white transition-colors`}
               >
                 Conditions Générales d&apos;Utilisation
