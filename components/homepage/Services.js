@@ -43,13 +43,13 @@ const services = [
   { id: 2,  title: "Charpente industrielle",      endPoint: "/services/charpente-industrielle",       panels: ["/img/charpente-industrielle/img2.webp",   "/img/charpente-industrielle/img4.webp",   "/img/charpente-industrielle/img6.webp"] },
   { id: 3,  title: "Extension / maison ossature", endPoint: "/services/extension-ou-maison-ossature", panels: ["/img/extension-maison-ossature/img1.webp", "/img/extension-maison-ossature/img3.webp", "/img/extension-maison-ossature/img6.webp"] },
   { id: 4,  title: "Préau",                       endPoint: "/services/preau",                        panels: ["/img/préau/img1.webp",                    "/img/préau/img2.webp",                    "/img/préau/img3.webp"] },
-  { id: 5,  title: "Carport",                     endPoint: "/services/carport",                      panels: ["/img/carport/img2.webp",                  "/img/carport/img3.webp",                  "/img/carport/img4.webp"] },
+  { id: 5,  title: "Carport",                     endPoint: "/services/carport",                      panels: ["/img/carport/img1.webp",                  "/img/carport/img3.webp",                  "/img/carport/img4.webp"] },
   { id: 6,  title: "Terrasse",                    endPoint: "/services/terrasse",                     panels: ["/img/terrasse/img1.webp",                 "/img/terrasse/img4.webp",                 "/img/terrasse/img6.webp"] },
   { id: 7,  title: "Aménagement des combles",     endPoint: "/services/amenagement-des-combles",      panels: ["/img/aménagement-combles/img1.webp",       "/img/aménagement-combles/img2.webp",       "/img/aménagement-combles/img4.webp"] },
   { id: 8,  title: "Menuiserie extérieure",       endPoint: "/services/menuiserie-exterieure",        panels: ["/img/menuiserie-extérieure/img2.webp",    "/img/menuiserie-extérieure/img3.webp",    "/img/menuiserie-extérieure/img4.webp"] },
   { id: 9,  title: "Bardages",                    endPoint: "/services/bardage",                      panels: ["/img/bardage/img1.webp",                  "/img/bardage/img4.webp",                  "/img/bardage/img8.webp"] },
   { id: 10, title: "Solivage porteur",            endPoint: "/services/solivage-porteur",             panels: ["/img/solivage-porteur/img1.webp",         "/img/solivage-porteur/img2.webp",         "/img/solivage-porteur/img3.webp"] },
-  { id: 11, title: "Menuiserie Générale",         endPoint: "/services/menuiserie-generale",          panels: ["/img/menuiserie-générale/img2.webp",      "/img/menuiserie-générale/img3.webp",      "/img/menuiserie-générale/img4.webp"] },
+  { id: 11, title: "Menuiserie Générale",         endPoint: "/services/menuiserie-generale",          panels: ["/img/menuiserie-générale/img1.webp",      "/img/menuiserie-générale/img3.webp",      "/img/menuiserie-générale/img4.webp"] },
 ];
 
 const popSpring = { type: "spring", stiffness: 280, damping: 22 };
