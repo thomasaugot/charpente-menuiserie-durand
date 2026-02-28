@@ -1,19 +1,37 @@
+import { IoMdStar } from "react-icons/io";
 import { RiDoubleQuotesL } from "react-icons/ri";
 import localFont from "next/font/local";
 
 const dosisFont = localFont({ src: "../assets/fonts/Dosis-Regular.ttf" });
 
-function TestimonialItem({ text, author }) {
+function TestimonialItem({ text, author, date }) {
+  const initial = author.charAt(0).toUpperCase();
+
   return (
-    <div className="p-4 py-10 mt-10 lg:ml-8 items-center bg-primary justify-center rounded-lg w-[90vw] md:w-[40vw] lg:w-[25vw] relative dark-shadow">
-      <RiDoubleQuotesL size={100} className="text-primary absolute -top-[65px] -left-8" />
-      <RiDoubleQuotesL size={100} className="text-white absolute -top-[61px] -left-6" />
-      <p className={`text-white italic text-[17px] ${dosisFont.className}`}>{text}</p>
-      <p
-        className={`text-primary absolute font-semibold -top-6 right-4 p-3 bg-white rounded-xl ${dosisFont.className}`}
-      >
-        {author}
+    <div className="w-80 lg:w-96 shrink-0 flex flex-col bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-6 gap-3">
+      {/* Stars */}
+      <div className="flex gap-0.5">
+        {[...Array(5)].map((_, i) => (
+          <IoMdStar key={i} size={16} className="text-yellow-400" />
+        ))}
+      </div>
+
+      {/* Quote */}
+      <RiDoubleQuotesL size={24} className="text-primary shrink-0" />
+      <p className={`${dosisFont.className} text-white/90 text-base leading-relaxed`}>
+        {text}
       </p>
+
+      {/* Author */}
+      <div className="flex items-center gap-3 mt-auto pt-3 border-t border-white/10">
+        <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center shrink-0">
+          <span className="text-white font-bold text-sm">{initial}</span>
+        </div>
+        <div>
+          <p className={`${dosisFont.className} text-white font-semibold text-base`}>{author}</p>
+          {date && <p className={`${dosisFont.className} text-white/40 text-sm`}>{date}</p>}
+        </div>
+      </div>
     </div>
   );
 }

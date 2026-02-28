@@ -1,16 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Thumbs } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
-import BackToHomepageButton from "@/components/BackButton";
+import React from "react";
 import { motion } from "framer-motion";
-import PopupForm from "@/components/PopupForm";
-import ContactDetailsService from "@/components/ContactDetailsService";
+import Link from "next/link";
 import localFont from "next/font/local";
+import { FaArrowLeft, FaPhoneAlt } from "react-icons/fa";
 
 import img1 from "@/assets/img/charpente-traditionelle/img1.webp";
 import img2 from "@/assets/img/charpente-traditionelle/img2.webp";
@@ -36,144 +31,152 @@ import img22 from "@/assets/img/charpente-traditionelle/img22.webp";
 import img23 from "@/assets/img/charpente-traditionelle/img23.webp";
 import img24 from "@/assets/img/charpente-traditionelle/img24.webp";
 import img25 from "@/assets/img/charpente-traditionelle/img25.webp";
+import img26 from "@/assets/img/charpente-traditionelle/img26.webp";
+import img27 from "@/assets/img/charpente-traditionelle/img27.webp";
+import img28 from "@/assets/img/charpente-traditionelle/img28.webp";
+import img29 from "@/assets/img/charpente-traditionelle/img29.webp";
+import img30 from "@/assets/img/charpente-traditionelle/img30.webp";
+import img31 from "@/assets/img/charpente-traditionelle/img31.webp";
+import img32 from "@/assets/img/charpente-traditionelle/img32.webp";
+import img33 from "@/assets/img/charpente-traditionelle/img33.webp";
+import img34 from "@/assets/img/charpente-traditionelle/img34.webp";
+import img35 from "@/assets/img/charpente-traditionelle/img35.webp";
+import img36 from "@/assets/img/charpente-traditionelle/img36.webp";
+import img37 from "@/assets/img/charpente-traditionelle/img37.webp";
+import img38 from "@/assets/img/charpente-traditionelle/img38.webp";
+import img39 from "@/assets/img/charpente-traditionelle/img39.webp";
+import img40 from "@/assets/img/charpente-traditionelle/img40.webp";
+import img41 from "@/assets/img/charpente-traditionelle/img41.webp";
+import img42 from "@/assets/img/charpente-traditionelle/img42.webp";
 
-const dosisFont = localFont({ src: "../../assets/fonts/Dosis-Medium.ttf" });
+const dosisFont = localFont({ src: "../../assets/fonts/Dosis-Regular.ttf" });
+
+const images = [
+  img1, img2, img3, img4, img5, img6, img7, img8, img9, img10,
+  img11, img13, img14, img15, img16, img17, img18, img19, img20,
+  img21, img22, img23, img24, img25, img26, img27, img28, img29,
+  img30, img31, img32, img33, img34, img35, img36, img37, img38,
+  img39, img40, img41, img42,
+];
 
 function CharpenteTraditionelle() {
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const images = [
-    img1,
-    img2,
-    img3,
-    img4,
-    img5,
-    img6,
-    img7,
-    img8,
-    img9,
-    img10,
-    img11,
-    img13,
-    img14,
-    img15,
-    img16,
-    img17,
-    img18,
-    img19,
-    img20,
-    img21,
-    img22,
-    img23,
-    img24,
-    img25,
-  ];
-
-  const handleToggleForm = () => {
-    setIsFormOpen(!isFormOpen);
-  };
-
   return (
-    <div className="h-full px-6 lg:px-36 py-[150px] flex flex-col gap-10 relative brick-bg min-h-[100vh]">
-      <BackToHomepageButton />
-      <ContactDetailsService />
-      <div className="relative flex flex-col text-center items-center lg:flex-row justify-center gap-8 p-4">
-        <div className="w-full lg:w-1/2">
-          <Swiper
-            pagination={{ clickable: true }}
-            modules={[Pagination, Autoplay, Thumbs]}
-            autoplay={{ delay: 3000 }}
-            thumbs={{ swiper: thumbsSwiper }}
-          >
-            {images.map((image, index) => (
-              <SwiperSlide key={index}>
-                <div className="relative w-full h-0 pb-[75%] overflow-hidden rounded-lg">
-                  <Image
-                    src={image}
-                    alt={`Slide ${index + 1}`}
-                    layout="fill"
-                    objectFit="cover"
-                    priority
-                    className="absolute top-0 left-0 w-full h-full object-cover"
-                  />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+    <div className="flex flex-col min-h-screen brick-bg">
 
-          <Swiper
-            onSwiper={setThumbsSwiper}
-            slidesPerView={4}
-            spaceBetween={10}
-            watchSlidesProgress
-            className="mt-4"
-          >
-            {images.map((image, index) => (
-              <SwiperSlide key={index}>
-                <div className="relative w-full h-0 pb-[75%] overflow-hidden rounded-lg">
-                  <Image
-                    src={image}
-                    alt={`Thumbnail ${index + 1}`}
-                    layout="fill"
-                    objectFit="cover"
-                    className="absolute top-0 left-0 w-full h-full object-cover cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110"
-                  />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+      {/* ── Hero ─────────────────────────────────────────── */}
+      <section className="max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-20 pt-28 pb-16">
 
-        <div className="flex flex-col lg:ml-20 relative w-[90vw] lg:w-[40vw]">
-          <motion.h1
-            initial={{ y: -50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            exit={{ opacity: 0 }}
-            viewport={{ once: true }}
-            className="capitalize text-black tracking-wider text-center text-4xl lg:text-5xl xl:text-nowrap font-semibold mt-8 lg:mt-0 mx-auto"
-            transition={{
-              type: "spring",
-              stiffness: 40,
-              delay: 0.2,
-              ease: "easeOut",
-            }}
+        {/* Back */}
+        <Link
+          href="/"
+          className={`${dosisFont.className} inline-flex items-center gap-2 text-darkGrey/40 hover:text-primary text-sm tracking-widest uppercase transition-colors duration-200 mb-10`}
+        >
+          <FaArrowLeft size={11} />
+          Retour à l&apos;accueil
+        </Link>
+
+        {/* Two-column: text + bento */}
+        <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-10 lg:gap-14 items-center">
+
+          {/* Left — text */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col gap-6"
           >
-            Charpente Traditionnelle
-          </motion.h1>
-          <p
-            className={`${dosisFont.className} text-darkGrey w-[90vw] lg:w-full mt-6 lg:mt-10`}
-          >
-            Chez nous, la Charpente Traditionnelle incarne l&apos;essence même
-            du savoir-faire artisanal. Chaque pièce de bois est choisie avec
-            soin, travaillée avec précision, pour créer des structures robustes
-            et intemporelles. Notre équipe de charpentiers expérimentés met tout
-            son cœur et son expertise dans chaque projet, qu&apos;il
-            s&apos;agisse de la restauration d&apos;une vieille maison de
-            campagne ou de la construction d&apos;une nouvelle demeure. Nous
-            comprenons l&apos;importance de préserver les techniques
-            traditionnelles tout en intégrant les innovations modernes pour
-            garantir des résultats à la fois authentiques et durables. Avec
-            nous, votre charpente traditionnelle est bien plus qu&apos;une
-            simple structure : c&apos;est un témoignage de notre engagement
-            envers l&apos;excellence et notre passion pour le métier.
-          </p>
-          <div className="flex flex-col lg:flex-row mt-10 items-center justify-center gap-6 lg:gap-0">
-            <p
-              className={`${dosisFont.className} text-darkGrey font-semibold w-[80vw] mx-auto text-center lg:text-left`}
-            >
-              Des questions? Nous sommes là pour vous renseigner !
+            <p className={`${dosisFont.className} text-primary/60 text-xs uppercase tracking-widest`}>
+              Nos services
             </p>
-            <button
-              onClick={handleToggleForm}
-              className={`${dosisFont.className} primary-button flex primary-button-bg dark-shadow text-nowrap mx-auto`}
-            >
-              Nous Contacter
-            </button>
-          </div>
-        </div>
-      </div>
+            <h1 className="text-darkGrey text-4xl lg:text-5xl tracking-wider font-medium leading-tight">
+              <span className="text-primary text-5xl lg:text-6xl">C</span>harpente Traditionnelle
+            </h1>
+            <p className={`${dosisFont.className} text-darkGrey/65 text-base leading-relaxed`}>
+              Chez nous, la Charpente Traditionnelle incarne l&apos;essence même
+              du savoir-faire artisanal. Chaque pièce de bois est choisie avec soin,
+              travaillée avec précision, pour créer des structures robustes et
+              intemporelles. Notre équipe met tout son cœur dans chaque projet,
+              qu&apos;il s&apos;agisse de restauration ou de nouvelle construction.
+            </p>
+            <div className="flex flex-col gap-2 pt-2">
+              <Link
+                href="/#contact"
+                className={`${dosisFont.className} bg-primary text-white rounded-full px-8 py-4 text-center font-bold tracking-wide text-base hover:bg-orange-600 active:scale-95 transition-all duration-200`}
+              >
+                Demander un Devis
+              </Link>
+              <a
+                href="tel:+33676508551"
+                className={`${dosisFont.className} flex items-center justify-center gap-2 text-darkGrey/40 text-sm py-2 hover:text-primary transition-colors duration-200`}
+              >
+                <FaPhoneAlt size={12} color="#f37139" />
+                +33 6 76 50 85 51
+              </a>
+            </div>
+          </motion.div>
 
-      <PopupForm isOpen={isFormOpen} closeModal={() => setIsFormOpen(false)} />
+          {/* Right — bento grid */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="grid grid-cols-3 grid-rows-3 gap-2 h-[420px] lg:h-[520px]"
+          >
+            {/* Big top-left */}
+            <div className="col-span-2 row-span-2 relative rounded-2xl overflow-hidden shadow-lg">
+              <Image src={images[0]} alt="Charpente Traditionnelle" fill sizes="40vw" style={{ objectFit: "cover" }} priority />
+            </div>
+            {/* Top right */}
+            <div className="col-span-1 row-span-1 relative rounded-2xl overflow-hidden shadow-lg">
+              <Image src={images[1]} alt="Charpente Traditionnelle" fill sizes="20vw" style={{ objectFit: "cover" }} />
+            </div>
+            {/* Mid right */}
+            <div className="col-span-1 row-span-1 relative rounded-2xl overflow-hidden shadow-lg">
+              <Image src={images[2]} alt="Charpente Traditionnelle" fill sizes="20vw" style={{ objectFit: "cover" }} />
+            </div>
+            {/* Bottom left */}
+            <div className="col-span-1 row-span-1 relative rounded-2xl overflow-hidden shadow-lg">
+              <Image src={images[3]} alt="Charpente Traditionnelle" fill sizes="20vw" style={{ objectFit: "cover" }} />
+            </div>
+            {/* Bottom right wide */}
+            <div className="col-span-2 row-span-1 relative rounded-2xl overflow-hidden shadow-lg">
+              <Image src={images[4]} alt="Charpente Traditionnelle" fill sizes="30vw" style={{ objectFit: "cover" }} />
+            </div>
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* ── Photo grid ───────────────────────────────────── */}
+      <section className="max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-20 pb-24">
+        <div className="border-t border-darkGrey/10 pt-14 mb-10">
+          <h2 className="text-darkGrey text-4xl tracking-wider font-medium">
+            <span className="text-primary text-5xl">N</span>os réalisations en photos
+          </h2>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          {images.map((img, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: (i % 8) * 0.04 }}
+              className="relative aspect-square rounded-xl overflow-hidden shadow-md"
+            >
+              <Image
+                src={img}
+                alt={`Charpente Traditionnelle ${i + 1}`}
+                fill
+                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                style={{ objectFit: "cover" }}
+                className="hover:scale-105 transition-transform duration-500"
+              />
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
     </div>
   );
 }

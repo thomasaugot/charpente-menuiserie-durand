@@ -1,147 +1,172 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaFacebook } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
 import localFont from "next/font/local";
 
 const dosisFont = localFont({ src: "../assets/fonts/Dosis-Regular.ttf" });
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15, delayChildren: 0.1 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
 const Footer = () => {
+  const { ref, inView } = useInView({ threshold: 0.1 });
   const [isVisible, setIsVisible] = useState(false);
-  const { ref, inView } = useInView({
-    threshold: 0.2, // set threshold to 20%
-  });
-
-  useEffect(() => {
-    if (inView) {
-      setIsVisible(true);
-    }
-  }, [inView]);
-
   const currentYear = new Date().getFullYear();
 
-  const handleEmailClick = () => {
-    window.location.href = "mailto:charpente.menuiserie.durand@gmail.com";
-  };
-
-  const handlePhoneClick = () => {
-    window.location.href = "tel:+33676508551";
-  };
-
-  const aboutRef = useRef(null);
-  const [isDesktop, setIsDesktop] = useState(false);
-
   useEffect(() => {
-    aboutRef.current = document.getElementById("footer");
-  }, []);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 1024);
-    };
-
-    handleResize(); // Check initial viewport width
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+    if (inView) setIsVisible(true);
+  }, [inView]);
 
   return (
-    <footer
-      ref={ref}
-      id="footer"
-      className={`relative bg-darkGrey text-white py-12 lg:pb-8 lg:pt-2 `}
-    >
-      {isVisible && (
-        <>
-          <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center">
-            <div className="mb-4 lg:mb-0 flex flex-col items-center lg:items-start lg:ml-8">
-              <div className="flex mt-6">
-                <FaLocationDot size={25} color="#f37139" className="mr-2" />
-                <div className="flex flex-col text-center lg:text-left">
-                  <p className={`${dosisFont.className} text-lg`}>
-                    Sarl Charpente Menuiserie Durand
-                  </p>
-                  <p className={`${dosisFont.className} text-lg`}>
-                    Z.A. la Pommeraie, Rue des Indes
-                  </p>
-                  <p className={`${dosisFont.className} text-lg`}>44780 Missillac</p>
-                </div>
-              </div>
-              <br />
-              <div onClick={handleEmailClick} className="flex" style={{ cursor: "pointer" }}>
-                <MdEmail size={25} color="#f37139" className="mr-2" />
-                <p className={`${dosisFont.className} text-lg`}>
-                  charpente.menuiserie.durand@gmail.com
-                </p>
-              </div>
-              <br />
-              <div onClick={handlePhoneClick} className="flex" style={{ cursor: "pointer" }}>
-                <FaPhoneAlt size={23} color="#f37139" className="mr-2" />
-                <p className={`${dosisFont.className} text-lg`}>+33 6 76 50 85 51</p>
-              </div>
-            </div>{" "}
-            <a
-              href="https://www.facebook.com/profile.php?id=100063695462775"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <motion.div
-                initial={{ x: "100%", opacity: 0 }}
-                animate={{ x: 5, opacity: 1 }}
-                transition={{
-                  type: "linear",
-                  stiffness: 40,
-                  delay: 0.5,
-                  ease: "easeOut",
-                }}
-                className="flex items-center image-shadow justify-center bg-primary p-4 absolute -top-[50px] lg:top-[30%] right-0"
-              >
-                <h2 className={`${dosisFont.className} text-xl font-medium mr-4 text-white`}>
-                  Suivez-nous !
-                </h2>
+    <footer ref={ref} id="footer" className="bg-darkGrey text-white">
+      <div className="h-1 w-full bg-primary" />
 
-                <FaFacebook size={40} className="w-[50px] transition hover:scale-90 text-white" />
-              </motion.div>
-            </a>
+      {isVisible && (
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="container mx-auto px-6 pt-10 pb-6"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
+            {/* Company identity */}
+            <motion.div variants={itemVariants} className="flex flex-col gap-4">
+              <h3 className={`${dosisFont.className} text-primary text-2xl font-semibold`}>
+                Charpente Menuiserie Durand
+              </h3>
+              <p className={`${dosisFont.className} text-lightGrey text-base leading-relaxed`}>
+                Artisan charpentier et menuisier en Loire-Atlantique, spécialisé dans
+                la charpente traditionnelle, industrielle et les menuiseries sur mesure.
+              </p>
+            </motion.div>
+
+            {/* Contact */}
+            <motion.div variants={itemVariants} className="flex flex-col gap-4">
+              <h4 className={`${dosisFont.className} text-primary text-sm uppercase tracking-widest`}>
+                Contact
+              </h4>
+              <div className="flex flex-col gap-3">
+                <div className="flex items-start gap-3">
+                  <FaLocationDot size={17} className="text-primary mt-1 shrink-0" />
+                  <div className={`${dosisFont.className} text-base text-lightGrey`}>
+                    <p>Sarl Charpente Menuiserie Durand</p>
+                    <p>Z.A. la Pommeraie, Rue des Indes</p>
+                    <p>44780 Missillac</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() =>
+                    (window.location.href =
+                      "mailto:charpente.menuiserie.durand@gmail.com")
+                  }
+                  className="flex items-center gap-3 group text-left"
+                >
+                  <MdEmail size={17} className="text-primary shrink-0" />
+                  <span
+                    className={`${dosisFont.className} text-base text-lightGrey group-hover:text-white transition-colors`}
+                  >
+                    charpente.menuiserie.durand@gmail.com
+                  </span>
+                </button>
+                <button
+                  onClick={() => (window.location.href = "tel:+33676508551")}
+                  className="flex items-center gap-3 group text-left"
+                >
+                  <FaPhoneAlt size={15} className="text-primary shrink-0" />
+                  <span
+                    className={`${dosisFont.className} text-base text-lightGrey group-hover:text-white transition-colors`}
+                  >
+                    +33 6 76 50 85 51
+                  </span>
+                </button>
+              </div>
+            </motion.div>
+
+            {/* Social */}
+            <motion.div variants={itemVariants} className="flex flex-col gap-4">
+              <h4 className={`${dosisFont.className} text-primary text-sm uppercase tracking-widest`}>
+                Suivez-nous
+              </h4>
+              <a
+                href="https://www.facebook.com/profile.php?id=100063695462775"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-3 group w-fit"
+              >
+                <div className="p-3 rounded-lg bg-white/10 group-hover:bg-primary transition-colors duration-300">
+                  <FaFacebook size={22} className="text-white" />
+                </div>
+                <span
+                  className={`${dosisFont.className} text-base text-lightGrey group-hover:text-white transition-colors`}
+                >
+                  Facebook
+                </span>
+              </a>
+              <a
+                href="https://www.instagram.com/charpentemenuiseriedurand/"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-3 group w-fit"
+              >
+                <div className="p-3 rounded-lg bg-white/10 group-hover:bg-primary transition-colors duration-300">
+                  <FaInstagram size={22} className="text-white" />
+                </div>
+                <span
+                  className={`${dosisFont.className} text-base text-lightGrey group-hover:text-white transition-colors`}
+                >
+                  Instagram
+                </span>
+              </a>
+            </motion.div>
           </div>
-          <div className="mt-8 text-center mx-auto max-w-[90vw] flex flex-col gap-3 justify-center">
-            <div className="flex flex-col md:flex-row justify-center gap-2 lg:gap-5">
+
+          {/* Bottom bar */}
+          <div className="border-t border-white/10 pt-5 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-5 text-center">
               <a
                 href="/politique-de-confidentialite"
-                className={`${dosisFont.className} text-lg hover:underline`}
+                className={`${dosisFont.className} text-sm text-lightGrey hover:text-white transition-colors`}
               >
                 Politique de Confidentialité
               </a>
               <a
                 href="/conditions-generales-dutilisation"
-                className={`${dosisFont.className} text-lg hover:underline`}
+                className={`${dosisFont.className} text-sm text-lightGrey hover:text-white transition-colors`}
               >
                 Conditions Générales d&apos;Utilisation
               </a>
             </div>
-
-            <p className={`${dosisFont.className} text-lg`}>
-              &copy; 2020 - {currentYear} Sarl Charpente Menuiserie Durand. Site Web développé par{" "}
+            <p className={`${dosisFont.className} text-sm text-lightGrey text-center`}>
+              &copy; 2020 – {currentYear} Sarl Charpente Menuiserie Durand. Site développé par{" "}
               <a
                 href="https://thomasaugot.com/"
                 target="_blank"
                 rel="noreferrer"
-                className="underline underline-offset-2"
+                className="hover:text-white transition-colors underline underline-offset-2"
               >
                 Thomas Augot
               </a>
               .
             </p>
           </div>
-        </>
+        </motion.div>
       )}
     </footer>
   );

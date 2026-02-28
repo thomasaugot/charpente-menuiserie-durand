@@ -2,16 +2,30 @@
 
 import homeBg from "/assets/img/home.webp";
 import localFont from "next/font/local";
+import { motion } from "framer-motion";
+import { FiChevronDown, FiArrowRight } from "react-icons/fi";
 
-const robotoFont = localFont({ src: "../assets/fonts/RobotoMono-Regular.ttf" });
+const dosisFont = localFont({ src: "../assets/fonts/Dosis-Regular.ttf" });
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.18, ease: "easeOut" },
+  }),
+};
 
 const Hero = () => {
   return (
     <section
       id="home"
-      className="relative w-full h-screen flex items-center justify-center px-4 lg:px-24"
+      className="relative w-full h-screen flex items-end pb-16 lg:pb-20 px-8 md:px-16 lg:px-24 overflow-hidden"
     >
-      <div className="filter-home bg-white h-[100vh] w-[200vw] absolute"></div>
+      {/* Original overlay */}
+      <div className="absolute inset-0 bg-white" style={{ opacity: 0.3, zIndex: 0 }} />
+
+      {/* Background image */}
       <div
         className="absolute inset-0"
         style={{
@@ -23,184 +37,80 @@ const Hero = () => {
         }}
       />
 
-      <div className="flex flex-col z-10 justify-start md:justify-center">
-        <h1 className="max-w-[85vw] text-left md:text-center text-8xl md:text-9xl lg:text-8xl gradient-text">
-          Charpente{" "}
-          <span className={`${robotoFont.className} -ml-1`}>M</span>
-          enuiserie Durand
-        </h1>
-        <div className="flex overlay flex-nowrap max-w-[90vw] mt-8"></div>
-        <div className="flex text flex-nowrap max-w-[90vw] mt-8">
-          <div className="wrapper block">
-            <div className="letter">L</div>
-            <div className="shadow">L</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">&apos;</div>
-            <div className="shadow">&apos;</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">e</div>
-            <div className="shadow">e</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">x</div>
-            <div className="shadow">x</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">p</div>
-            <div className="shadow">p</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">e</div>
-            <div className="shadow">e</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">r</div>
-            <div className="shadow">r</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">t</div>
-            <div className="shadow">t</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">i</div>
-            <div className="shadow">i</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">s</div>
-            <div className="shadow">s</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">e</div>
-            <div className="shadow">e</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">&nbsp;</div>
-            <div className="shadow">&nbsp;</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">B</div>
-            <div className="shadow">B</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">o</div>
-            <div className="shadow">o</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">i</div>
-            <div className="shadow">i</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">s</div>
-            <div className="shadow">s</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">&nbsp;</div>
-            <div className="shadow">&nbsp;</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">a</div>
-            <div className="shadow">a</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">u</div>
-            <div className="shadow">u</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">&nbsp;</div>
-            <div className="shadow">&nbsp;</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">S</div>
-            <div className="shadow">S</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">e</div>
-            <div className="shadow">e</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">r</div>
-            <div className="shadow">r</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">v</div>
-            <div className="shadow">v</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">i</div>
-            <div className="shadow">i</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">c</div>
-            <div className="shadow">c</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">e</div>
-            <div className="shadow">e</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">&nbsp;</div>
-            <div className="shadow">&nbsp;</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">d</div>
-            <div className="shadow">d</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">e</div>
-            <div className="shadow">e</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">&nbsp;</div>
-            <div className="shadow">&nbsp;</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">v</div>
-            <div className="shadow">v</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">o</div>
-            <div className="shadow">o</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">s</div>
-            <div className="shadow">s</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">&nbsp;</div>
-            <div className="shadow">&nbsp;</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">P</div>
-            <div className="shadow">P</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">r</div>
-            <div className="shadow">r</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">o</div>
-            <div className="shadow">o</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">j</div>
-            <div className="shadow">j</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">e</div>
-            <div className="shadow">e</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">t</div>
-            <div className="shadow">t</div>
-          </div>
-          <div className="wrapper block">
-            <div className="letter">s</div>
-            <div className="shadow">s</div>
-          </div>
-        </div>
+      {/* Pill-shaped glass card */}
+      <div className="relative z-10 flex flex-col gap-6 max-w-3xl bg-white/10 backdrop-blur-md border border-white/15 rounded-[3rem] px-12 py-10 md:px-16 md:py-12">
+
+        {/* Eyebrow tag */}
+        <motion.div
+          className="flex items-center gap-3"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          custom={0}
+        >
+          <div className="w-10 h-[2px] bg-primary shrink-0" />
+          <span className="text-darkGrey text-sm font-semibold tracking-[0.2em] uppercase font-mono">
+            Charpente · Menuiserie · Ossature bois
+          </span>
+        </motion.div>
+
+        {/* Title */}
+        <motion.h1
+          className="text-left text-6xl md:text-7xl lg:text-8xl gradient-text leading-tight"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          custom={1}
+        >
+          Charpente Menuiserie Durand
+        </motion.h1>
+
+        {/* Subtitle */}
+        <motion.p
+          className="text-darkGrey text-2xl md:text-3xl font-light tracking-wide"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          custom={2}
+        >
+          L&apos;expertise Bois au Service de vos Projets
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div
+          className="flex flex-wrap items-center gap-4 mt-2"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          custom={3}
+        >
+          <a
+            href="#contact"
+            className="font-mono inline-flex items-center gap-2 bg-primary text-white text-sm font-bold tracking-wide uppercase px-7 py-3 rounded-full shadow-lg hover:bg-primary/85 transition-colors duration-300"
+          >
+            Demander un devis
+          </a>
+          <a
+            href="#about"
+            className="font-mono inline-flex items-center gap-2 text-white text-sm font-bold tracking-wide uppercase drop-shadow hover:text-primary transition-colors duration-300"
+          >
+            Nos services
+            <FiArrowRight className="text-base" />
+          </a>
+        </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.a
+        href="#about"
+        className="absolute bottom-8 right-8 md:right-16 lg:right-24 flex flex-col items-center gap-1 text-darkGrey/40 hover:text-primary transition-colors duration-300"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.1, duration: 0.6 }}
+      >
+        <span className="text-xs tracking-widest uppercase">Découvrir</span>
+        <FiChevronDown className="text-xl animate-bounce" />
+      </motion.a>
     </section>
   );
 };

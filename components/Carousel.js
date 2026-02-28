@@ -1,16 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { EffectCoverflow, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-import { useEffect, useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { IoMdClose } from "react-icons/io";
-import { GrFormPrevious, GrFormNext } from "react-icons/gr";
+import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 import carouselItem1 from "@/assets/img/bardage/img3.webp";
 import carouselItem2 from "@/assets/img/charpente-traditionelle/img2.webp";
@@ -35,174 +29,215 @@ import carouselItem23 from "@/assets/img/extension-maison-ossature/img2.webp";
 import carouselItem24 from "@/assets/img/home.webp";
 import carouselItem25 from "@/assets/img/charpente-traditionelle/img25.webp";
 import carouselItem26 from "@/assets/img/terrasse/img3.webp";
+import carouselItem27 from "@/assets/img/charpente-traditionelle/img26.webp";
+import carouselItem28 from "@/assets/img/charpente-traditionelle/img27.webp";
+import carouselItem29 from "@/assets/img/charpente-traditionelle/img28.webp";
+import carouselItem30 from "@/assets/img/charpente-traditionelle/img29.webp";
+import carouselItem31 from "@/assets/img/charpente-traditionelle/img30.webp";
+import carouselItem32 from "@/assets/img/charpente-traditionelle/img31.webp";
+import carouselItem33 from "@/assets/img/charpente-traditionelle/img32.webp";
+import carouselItem34 from "@/assets/img/charpente-traditionelle/img33.webp";
+import carouselItem35 from "@/assets/img/charpente-traditionelle/img34.webp";
+import carouselItem36 from "@/assets/img/charpente-traditionelle/img35.webp";
+import carouselItem37 from "@/assets/img/charpente-traditionelle/img36.webp";
+import carouselItem38 from "@/assets/img/charpente-traditionelle/img37.webp";
+import carouselItem39 from "@/assets/img/charpente-traditionelle/img38.webp";
+import carouselItem40 from "@/assets/img/charpente-traditionelle/img39.webp";
+import carouselItem41 from "@/assets/img/charpente-traditionelle/img40.webp";
+import carouselItem42 from "@/assets/img/charpente-traditionelle/img41.webp";
+import carouselItem43 from "@/assets/img/charpente-traditionelle/img42.webp";
+
+const images = [
+  { id: 27, imageUrl: carouselItem27 },
+  { id: 28, imageUrl: carouselItem28 },
+  { id: 29, imageUrl: carouselItem29 },
+  { id: 30, imageUrl: carouselItem30 },
+  { id: 31, imageUrl: carouselItem31 },
+  { id: 32, imageUrl: carouselItem32 },
+  { id: 33, imageUrl: carouselItem33 },
+  { id: 34, imageUrl: carouselItem34 },
+  { id: 35, imageUrl: carouselItem35 },
+  { id: 36, imageUrl: carouselItem36 },
+  { id: 37, imageUrl: carouselItem37 },
+  { id: 38, imageUrl: carouselItem38 },
+  { id: 39, imageUrl: carouselItem39 },
+  { id: 40, imageUrl: carouselItem40 },
+  { id: 41, imageUrl: carouselItem41 },
+  { id: 42, imageUrl: carouselItem42 },
+  { id: 43, imageUrl: carouselItem43 },
+  { id: 1, imageUrl: carouselItem1 },
+  { id: 2, imageUrl: carouselItem2 },
+  { id: 3, imageUrl: carouselItem3 },
+  { id: 5, imageUrl: carouselItem5 },
+  { id: 6, imageUrl: carouselItem6 },
+  { id: 7, imageUrl: carouselItem7 },
+  { id: 8, imageUrl: carouselItem8 },
+  { id: 10, imageUrl: carouselItem10 },
+  { id: 11, imageUrl: carouselItem11 },
+  { id: 13, imageUrl: carouselItem13 },
+  { id: 14, imageUrl: carouselItem14 },
+  { id: 15, imageUrl: carouselItem15 },
+  { id: 16, imageUrl: carouselItem16 },
+  { id: 17, imageUrl: carouselItem17 },
+  { id: 18, imageUrl: carouselItem18 },
+  { id: 19, imageUrl: carouselItem19 },
+  { id: 20, imageUrl: carouselItem20 },
+  { id: 21, imageUrl: carouselItem21 },
+  { id: 22, imageUrl: carouselItem22 },
+  { id: 23, imageUrl: carouselItem23 },
+  { id: 24, imageUrl: carouselItem24 },
+  { id: 25, imageUrl: carouselItem25 },
+  { id: 26, imageUrl: carouselItem26 },
+];
+
+const CHUNK = 12;
+
+const getBentoClass = (index) => {
+  const pattern = index % 8;
+  if (pattern === 0) return "col-span-2 row-span-2";
+  if (pattern === 3) return "col-span-2";
+  return "";
+};
 
 const Carousel = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [zoomedImage, setZoomedImage] = useState(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(CHUNK);
+  const [zoomedIndex, setZoomedIndex] = useState(null);
 
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 768);
-  };
+  const allVisible = visibleCount >= images.length;
 
-  const images = [
-    { id: 1, imageUrl: carouselItem1 },
-    { id: 2, imageUrl: carouselItem2 },
-    { id: 3, imageUrl: carouselItem3 },
-    { id: 5, imageUrl: carouselItem5 },
-    { id: 6, imageUrl: carouselItem6 },
-    { id: 7, imageUrl: carouselItem7 },
-    { id: 8, imageUrl: carouselItem8 },
-    { id: 10, imageUrl: carouselItem10 },
-    { id: 11, imageUrl: carouselItem11 },
-    { id: 13, imageUrl: carouselItem13 },
-    { id: 14, imageUrl: carouselItem14 },
-    { id: 15, imageUrl: carouselItem15 },
-    { id: 16, imageUrl: carouselItem16 },
-    { id: 17, imageUrl: carouselItem17 },
-    { id: 18, imageUrl: carouselItem18 },
-    { id: 19, imageUrl: carouselItem19 },
-    { id: 20, imageUrl: carouselItem20 },
-    { id: 21, imageUrl: carouselItem21 },
-    { id: 22, imageUrl: carouselItem22 },
-    { id: 23, imageUrl: carouselItem23 },
-    { id: 24, imageUrl: carouselItem24 },
-    { id: 25, imageUrl: carouselItem25 },
-    { id: 26, imageUrl: carouselItem26 },
-  ];
+  const showMore = () =>
+    setVisibleCount((prev) => Math.min(prev + CHUNK, images.length));
+  const showLess = () => setVisibleCount(CHUNK);
 
-  useEffect(() => {
-    const preloadImages = async () => {
-      try {
-        await Promise.all(
-          images.map((item) => {
-            const img = new window.Image();
-            img.src = item.imageUrl.src || item.imageUrl;
-            return img;
-          })
-        );
-      } catch (error) {
-        console.error("Failed to preload images:", error);
-      }
-    };
-
-    preloadImages();
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+  const openZoom = (index) => setZoomedIndex(index);
+  const closeZoom = () => setZoomedIndex(null);
+  const gotoNext = useCallback(() => {
+    setZoomedIndex((i) => (i < images.length - 1 ? i + 1 : i));
+  }, []);
+  const gotoPrev = useCallback(() => {
+    setZoomedIndex((i) => (i > 0 ? i - 1 : i));
   }, []);
 
   useEffect(() => {
-    if (zoomedImage !== null) {
-      setCurrentImageIndex(
-        images.findIndex((item) => item.imageUrl === zoomedImage)
-      );
-    }
-  }, [zoomedImage, images]);
-
-  const slidesPerView = isMobile ? 1 : 3;
-
-  const openZoomedImage = (imageUrl) => {
-    setZoomedImage(imageUrl);
-  };
-
-  const closeZoomedImage = () => {
-    setZoomedImage(null);
-  };
-
-  const gotoNextImg = () => {
-    if (currentImageIndex < images.length - 1) {
-      setCurrentImageIndex(currentImageIndex + 1);
-      setZoomedImage(images[currentImageIndex + 1].imageUrl);
-    }
-  };
-
-  const gotoPrevImg = () => {
-    if (currentImageIndex > 0) {
-      setCurrentImageIndex(currentImageIndex - 1);
-      setZoomedImage(images[currentImageIndex - 1].imageUrl);
-    }
-  };
+    if (zoomedIndex === null) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") closeZoom();
+      if (e.key === "ArrowRight") gotoNext();
+      if (e.key === "ArrowLeft") gotoPrev();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [zoomedIndex, gotoNext, gotoPrev]);
 
   return (
     <>
-      <Swiper
-        effect={"coverflow"}
-        initialSlide={1}
-        grabCursor={true}
-        centeredSlides={true}
-        slidesPerView={slidesPerView}
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        }}
-        pagination={{ clickable: true }}
-        modules={[EffectCoverflow, Pagination]}
-        className="absolute my-24 lg:my-20 max-w-[1400px]"
-      >
-        {images.map((item) => (
-          <SwiperSlide key={item.id} className="w-full my-12 lg:my-20 relative">
+      <div className="w-full">
+        {/* Bento grid */}
+        <div className="w-full px-4 lg:px-10 pt-6 pb-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 auto-rows-[130px] md:auto-rows-[160px] lg:auto-rows-[200px]">
+          {images.slice(0, visibleCount).map((item, index) => (
             <div
-              style={{
-                width: "420px",
-                height: "330px",
-              }}
-              onClick={() => openZoomedImage(item.imageUrl)}
+              key={item.id}
+              className={`relative overflow-hidden rounded-2xl cursor-pointer group ${getBentoClass(index)}`}
+              onClick={() => openZoom(index)}
             >
               <Image
                 src={item.imageUrl}
-                alt={`image-${item.id}`}
-                layout="fill"
-                objectFit="cover"
-                className="image-shadow"
+                alt={`réalisation ${index + 1}`}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                style={{ objectFit: "cover" }}
+                className="transition-transform duration-500 group-hover:scale-105"
               />
             </div>
-          </SwiperSlide>
-        ))}
-        <div className="mt-[10px]"></div>
-      </Swiper>
+          ))}
+        </div>
 
-      {zoomedImage && !isMobile && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex justify-center items-center z-50">
-          <div className="relative max-w-[75vw] max-h-[85vh]">
+        {/* Fade gradient at the bottom of the grid */}
+        {!allVisible && (
+          <div className="absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-b from-transparent to-white pointer-events-none" />
+        )}
+      </div>
+
+      {/* Voir plus / Voir moins button */}
+      <div className="flex justify-center py-6 relative z-10">
+        {!allVisible ? (
+          <button
+            onClick={showMore}
+            className="flex flex-col items-center gap-1 text-darkGrey font-semibold tracking-wide hover:text-primary transition-colors duration-200"
+          >
+            <span>Voir plus</span>
+            <FiChevronDown className="text-2xl animate-bounce" />
+          </button>
+        ) : (
+          <button
+            onClick={showLess}
+            className="flex flex-col items-center gap-1 text-darkGrey font-semibold tracking-wide hover:text-primary transition-colors duration-200"
+          >
+            <FiChevronUp className="text-2xl" />
+            <span>Voir moins</span>
+          </button>
+        )}
+      </div>
+
+      {/* Lightbox */}
+      {zoomedIndex !== null && (
+        <div
+          className="fixed inset-0 bg-black/90 z-50 flex flex-col"
+          onClick={closeZoom}
+        >
+          {/* Top bar */}
+          <div className="flex justify-between items-center px-4 py-3 shrink-0" onClick={(e) => e.stopPropagation()}>
+            <span className="text-white/60 text-sm font-medium">
+              {zoomedIndex + 1} / {images.length}
+            </span>
             <button
-              onClick={closeZoomedImage}
-              className="absolute top-0 right-0 m-4 text-white text-5xl"
+              onClick={closeZoom}
+              className="text-white/70 hover:text-white transition-colors p-1 rounded"
+              aria-label="Fermer"
             >
-              <IoMdClose />
+              <IoMdClose className="text-3xl" />
             </button>
-            {currentImageIndex < images.length - 1 && (
-              <button
-                className="absolute top-1/2 right-0 transform -translate-y-1/2 p-4 text-white text-6xl"
-                onClick={gotoNextImg}
-              >
-                <GrFormNext />
-              </button>
-            )}
-            {currentImageIndex > 0 && (
-              <button
-                className="absolute top-1/2 left-0 transform -translate-y-1/2 p-4 text-white text-6xl"
-                onClick={gotoPrevImg}
-              >
-                <GrFormPrevious />
-              </button>
-            )}
-            <div className="w-full h-full overflow-hidden">
+          </div>
+
+          {/* Image + side arrows */}
+          <div className="flex flex-1 items-center min-h-0">
+            {/* Prev */}
+            <button
+              onClick={(e) => { e.stopPropagation(); gotoPrev(); }}
+              disabled={zoomedIndex === 0}
+              className="shrink-0 text-white/60 hover:text-white disabled:opacity-20 disabled:cursor-default transition-colors px-2 lg:px-4"
+              aria-label="Précédent"
+            >
+              <MdChevronLeft className="text-6xl lg:text-8xl" />
+            </button>
+
+            {/* Image */}
+            <div
+              className="relative flex-1 h-full"
+              onClick={(e) => e.stopPropagation()}
+            >
               <Image
-                src={zoomedImage}
-                alt="zoomed-image"
-                layout="responsive"
-                objectFit="contain"
-                className="max-h-[90vh]"
-                style={{ userSelect: "none", pointerEvents: "none" }}
+                src={images[zoomedIndex].imageUrl}
+                alt={`réalisation ${zoomedIndex + 1}`}
+                fill
+                style={{ objectFit: "contain", userSelect: "none" }}
+                priority
               />
             </div>
+
+            {/* Next */}
+            <button
+              onClick={(e) => { e.stopPropagation(); gotoNext(); }}
+              disabled={zoomedIndex === images.length - 1}
+              className="shrink-0 text-white/60 hover:text-white disabled:opacity-20 disabled:cursor-default transition-colors px-2 lg:px-4"
+              aria-label="Suivant"
+            >
+              <MdChevronRight className="text-6xl lg:text-8xl" />
+            </button>
           </div>
+
+          {/* Bottom padding */}
+          <div className="shrink-0 h-4" />
         </div>
       )}
     </>

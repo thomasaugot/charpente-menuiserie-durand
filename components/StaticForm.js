@@ -68,75 +68,81 @@ const StaticForm = () => {
     messageRef.current.value = "";
   };
 
+  const inputClass = `mt-2 pb-2 w-full !bg-transparent border-0 border-b-2 border-darkGrey/20 text-darkGrey placeholder-darkGrey/30 focus:outline-none focus:border-primary transition-colors duration-300 ${dosisFont.className}`;
+
   return (
     <form
-      className="bg-transparent relative w-[90vw] lg:w-[40vw] p-0"
+      className="bg-transparent relative w-full p-0"
       onSubmit={sendMessage}
       action=""
     >
-      <div className="mb-4">
-        <label htmlFor="name" className={`${dosisFont.className} text-base font-semibold`}>
-          Nom
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          ref={nameRef}
-          className="mt-1 p-2 w-full border rounded-md"
-        />
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+        <div>
+          <label htmlFor="name" className={`${dosisFont.className} text-darkGrey/70 text-sm font-semibold tracking-wide`}>
+            Nom
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            ref={nameRef}
+            placeholder="Jean Dupont"
+            className={inputClass}
+          />
+        </div>
+        <div>
+          <label htmlFor="phone" className={`${dosisFont.className} text-darkGrey/70 text-sm font-semibold tracking-wide`}>
+            Téléphone
+          </label>
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            ref={phoneRef}
+            placeholder="+33 6 00 00 00 00"
+            className={inputClass}
+          />
+        </div>
       </div>
       <div className="mb-4">
-        <label htmlFor="name" className={`${dosisFont.className} text-base font-semibold`}>
-          Numéro de téléphone
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          ref={phoneRef}
-          className="mt-1 p-2 w-full border rounded-md"
-        />
-      </div>
-      <div className="mb-4">
-        <label htmlFor="name" className={`${dosisFont.className} text-base font-semibold`}>
+        <label htmlFor="email" className={`${dosisFont.className} text-darkGrey/70 text-sm font-semibold tracking-wide`}>
           Email
         </label>
         <input
           type="text"
-          id="name"
-          name="name"
+          id="email"
+          name="email"
           ref={emailRef}
-          className="mt-1 p-2 w-full border rounded-md"
+          placeholder="jean.dupont@email.com"
+          className={inputClass}
         />
       </div>
-      <div className="mb-4">
-        <label htmlFor="name" className={`${dosisFont.className} text-base font-semibold`}>
+      <div className="mb-6">
+        <label htmlFor="message" className={`${dosisFont.className} text-darkGrey/70 text-sm font-semibold tracking-wide`}>
           Message
         </label>
         <textarea
           id="message"
           name="message"
           ref={messageRef}
-          className="mt-1 p-2 w-full border rounded-md"
-          rows="6"
+          placeholder="Décrivez votre projet..."
+          className={inputClass}
+          rows="5"
         ></textarea>
       </div>
       <button
         type="submit"
         value="Send"
         disabled={isSubmitting}
-        className={`${dosisFont.className} text-base font-medium tracking-wide flex mx-auto primary-button primary-button-bg`}
+        className={`${dosisFont.className} inline-flex items-center gap-2 bg-primary text-white text-sm font-bold tracking-wide uppercase px-8 py-3 rounded-full shadow-lg hover:bg-primary/85 transition-colors duration-300 disabled:opacity-50`}
       >
-        Envoyer
+        Envoyer le message
       </button>
-      <div className="h-4 mt-3">
-        {stateMessage && (
-          <p className={`${dosisFont.className} text-black text-center text-base font-semibold`}>
-            {stateMessage}
-          </p>
-        )}
-      </div>
+      {stateMessage && (
+        <p className={`${dosisFont.className} text-darkGrey text-center text-sm font-semibold mt-3`}>
+          {stateMessage}
+        </p>
+      )}
     </form>
   );
 };

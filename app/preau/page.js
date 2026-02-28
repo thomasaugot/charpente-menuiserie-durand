@@ -8,7 +8,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import BackToHomepageButton from "@/components/BackButton";
 import { motion } from "framer-motion";
-import PopupForm from "@/components/PopupForm";
 import ContactDetailsService from "@/components/ContactDetailsService";
 import localFont from "next/font/local";
 
@@ -19,13 +18,8 @@ import img3 from "@/assets/img/préau/img3.webp";
 const dosisFont = localFont({ src: "../../assets/fonts/Dosis-Medium.ttf" });
 
 function Préau() {
-  const [isFormOpen, setIsFormOpen] = useState(false);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const images = [img1, img2, img3];
-
-  const handleToggleForm = () => {
-    setIsFormOpen(!isFormOpen);
-  };
 
   return (
     <div className="h-full px-6 lg:px-36 py-[150px] flex flex-col gap-10 relative brick-bg min-h-[100vh]">
@@ -118,16 +112,12 @@ function Préau() {
             >
               Des questions? Nous sommes là pour vous renseigner !
             </p>
-            <button
-              onClick={handleToggleForm}
-              className={`${dosisFont.className} primary-button flex primary-button-bg dark-shadow text-nowrap mx-auto`}
-            >
+            <a href="/#contact" className={`${dosisFont.className} primary-button flex primary-button-bg dark-shadow text-nowrap mx-auto`}>
               Nous Contacter
-            </button>
+            </a>
           </div>
         </div>
       </div>
-      <PopupForm isOpen={isFormOpen} closeModal={() => setIsFormOpen(false)} />
     </div>
   );
 }

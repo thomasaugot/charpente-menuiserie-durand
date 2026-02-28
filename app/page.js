@@ -7,7 +7,6 @@ import Carousel from "@/components/Carousel";
 import TestimonialItem from "@/components/TestimonialItem";
 import GoogleWidget from "@/components/GoogleWidget";
 import Navbar from "@/components/Navbar";
-import OpeningHours from "@/components/OpeningHours";
 import StaticForm from "@/components/StaticForm";
 import ContactDetails from "@/components/ContactDetails";
 import Hero from "@/components/Hero";
@@ -19,16 +18,40 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import localFont from "next/font/local";
 
-const robotoFont = localFont({ src: "../assets/fonts/RobotoMono-Regular.ttf" });
+import { FaFacebook, FaInstagram } from "react-icons/fa";
+
+const dosisFont = localFont({ src: "../assets/fonts/Dosis-Regular.ttf" });
 
 const avis = [
   {
-    text: "La SARL Charpente Menuiserie Durand est intervenue chez nous en février 2023 pour un renforcement de charpente. Le devis a été réalisé rapidement après une visite pour estimer les travaux. Le tarif proposé était compétitif. L'intervention s'est ensuite faite quelques jours après. M. Durand et ses employés sont sympathiques, souriants, rassurants et inspirent confiance. En une journée ils ont effectué un gros travail pour un résultat très propre et satisfaisant. Je suis pleinement satisfait.",
-    author: "Arno Lesaint",
+    text: "Cette entreprise est intervenue pour refaire notre plancher à l'étage et faire un sarking. Le travail a été propre, soigné et rapide. Nous recommandons cette entreprise.",
+    author: "Marie Deshoux",
+    date: "Mars 2025",
   },
   {
-    text: "Je suis pleinement satisfaite de la société CMD. La prestation rendue (changement d'une poutre et création d'un jambage de renfort) est très qualitative. Entreprise sérieuse, travail soigné et très professionnel. Je recommande les service de Monsieur Durand.",
+    text: "Très bon travail réalisé par l'équipe de l'entreprise Charpente et Menuiserie Durand. Mes travaux comprenaient la réalisation d'une trémie et la condamnation d'un escatrappe. Tout s'est parfaitement passé dans les délais et le coût imparti. Je recommande sans problème.",
+    author: "Antoine Martin",
+    date: "Avril 2025",
+  },
+  {
+    text: "Enfin un professionnel qui se soucie de ses clients ! M. Durand Melvyn a géré la pose de nos menuiseries et la charpente de notre construction de maison. Une charpente incroyable !",
+    author: "Lucie Billeret",
+    date: "Juin 2023",
+  },
+  {
+    text: "La SARL Charpente Menuiserie Durand est intervenue chez nous pour un renforcement de charpente. Le devis a été réalisé rapidement, le tarif compétitif. M. Durand et ses employés inspirent confiance. Résultat très propre et satisfaisant.",
+    author: "Arno Lesaint",
+    date: "Février 2023",
+  },
+  {
+    text: "J'ai réalisé la charpente et l'ossature bois de mon extension avec Melvyn et son équipe. Entreprise sérieuse et très professionnelle.",
+    author: "Davy Philippe",
+    date: "Janvier 2025",
+  },
+  {
+    text: "Je suis pleinement satisfaite de la société CMD. La prestation rendue (changement d'une poutre et création d'un jambage de renfort) est très qualitative. Entreprise sérieuse, travail soigné et très professionnel.",
     author: "Sylvie Nouvellon",
+    date: "Mars 2021",
   },
 ];
 
@@ -55,37 +78,37 @@ export default function Home() {
 
         <section
           id="about"
-          className="flex flex-col px-2 py-8 lg:px-10 lg:py-12 relative h-auto bg-darkGrey custom-pointer"
+          className="relative bg-darkGrey custom-pointer"
         >
           <div className="lg:hidden polygon w-[110vw] h-[45px] bg-primary overflow-hidden absolute transform -scale-y-100 top-0 -right-[120px] md:right-[-320px] z-20"></div>
-          <h1 className="text-white max-w-[80vw] text-5xl ml-[5%] my-8 lg:my-2 text-center tracking-wider font-medium">
-            <span className={`${robotoFont.className} text-primary text-6xl`}>
-              N
-            </span>
-            os Services
-          </h1>
-          <Services />
+          <div className="max-w-[1400px] mx-auto w-full flex flex-col px-8 pt-20 pb-28 md:px-16 md:pt-24 md:pb-36 lg:px-24 lg:pt-28 lg:pb-40">
+            <h1 className="text-white text-4xl lg:text-5xl mb-12 lg:mb-16 tracking-wider font-medium">
+              <span className="text-primary text-5xl lg:text-6xl">N</span>os Services
+            </h1>
+            <Services />
+          </div>
           <div className="hidden lg:block polygon w-[49vw] h-[55px] bg-primary overflow-hidden absolute bottom-0 -right-[200px] z-20 xl:right-[-245px]"></div>
         </section>
 
         <section
           id="gallery"
-          className="h-auto relative flex items-center justify-around brick-bg px-2 py-8"
+          className="relative brick-bg pb-20"
         >
-          <h1 className="absolute top-[5%] lg:top-[9%] lg:left-[5%] max-w-[85vw] tracking-wide font-semibold text-4xl text-darkGrey mx-auto text-center lg:text-left mb-12">
-            <span className={`${robotoFont.className} text-primary text-6xl`}>
-              N
-            </span>
-            os réalisations en quelques photos
-          </h1>
+          <div className="px-6 md:px-10 lg:px-14 pt-12 md:pt-16">
+            <h1 className="tracking-wide font-semibold text-4xl text-darkGrey text-center lg:text-left mb-0">
+              <span className="text-primary text-6xl">N</span>os réalisations en quelques photos
+            </h1>
+          </div>
           <Carousel />
           <div className="polygon w-[120vw] lg:w-[49vw] h-[45px] lg:h-[55px] bg-darkGrey overflow-hidden absolute -scale-y-100 bottom-0 right-[105px] lg:left-[-200px] xl:left-[-240px] z-20"></div>
         </section>
+
         <section
           id="testimonials"
-          className="relative flex flex-col lg:items-center lg:px-24 "
+          className="relative py-24 lg:py-32 overflow-hidden"
           ref={ref}
         >
+          {/* Wood background */}
           <div
             className="absolute inset-0"
             style={{
@@ -93,52 +116,104 @@ export default function Home() {
               backgroundPosition: "center",
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
-              zIndex: -1,
             }}
           />
-          <h1 className="absolute top-6 md:text-nowrap lg:top-[9%] text-center lg:text-left lg:left-[5%] w-full lg:w-[30vw] tracking-wider font-semibold text-5xl text-white">
-            <span className="text-white text-4xl">
-              <span className="text-darkGrey text-5xl">I</span>ls nous ont fait
-              confiance
-            </span>
-          </h1>
-          <div className="flex flex-col lg:flex-row mt-24 mb-12 lg:mt-[150px] lg:mb-[150px] gap-16 lg:gap-8 mx-auto items-center">
-            <div className="flex flex-col md:flex-row relative gap-8">
-              {avis.map((item, index) => (
-                <TestimonialItem
-                  key={index}
-                  text={item.text}
-                  author={item.author}
-                />
-              ))}
+          <div className="absolute inset-0 bg-black/55" />
+
+          <div className="relative z-10">
+            {/* Title */}
+            <div className="max-w-[1400px] mx-auto w-full px-8 md:px-16 lg:px-24 mb-16">
+              <h1 className="text-white text-4xl lg:text-5xl font-semibold tracking-wider">
+                <span className="text-gray-300 text-5xl lg:text-6xl">I</span>ls nous ont fait confiance
+              </h1>
             </div>
-            <motion.div
-              whileInView={{ scale: 1, opacity: 1 }}
-              initial={{ scale: 0.8, opacity: 0 }}
-              viewport={{ once: true }}
-              animate={{ scale: -0.3 }}
-              transition={{
-                type: "spring",
-                stiffness: 60,
-                delay: 0.3,
-              }}
-            >
-              <GoogleWidget />
-            </motion.div>
+
+            {/* Single marquee row — 4 copies for seamless loop — intentionally full-width */}
+            <div className="marquee-track overflow-hidden mb-16">
+              <div className="flex gap-4 animate-marquee-left w-max px-4">
+                {[...avis, ...avis, ...avis, ...avis].map((item, i) => (
+                  <TestimonialItem key={i} text={item.text} author={item.author} date={item.date} />
+                ))}
+              </div>
+            </div>
+
+            {/* Google widget — centered below */}
+            <div className="max-w-[1400px] mx-auto w-full flex justify-center px-8 lg:px-24">
+              <motion.div
+                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 16 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4 }}
+              >
+                <GoogleWidget />
+              </motion.div>
+            </div>
           </div>
         </section>
+
         <section
           id="contact"
-          className="flex flex-col items-center lg:justify-around brick-bg h-full p-24 relative"
+          className="brick-bg relative"
         >
           <div className="polygon w-[110vw] lg:w-[49vw] h-[45px] lg:h-[55px] bg-primary overflow-hidden absolute -scale-y-100 top-0 -right-[120px] md:right-[-240px] lg:right-[-200px] xl:right-[-240px] z-20"></div>
-          <div className="flex flex-col-reverse lg:flex-row lg:gap-12 items-center">
-            <OpeningHours />
-            <div className="flex flex-col form-shadow p-8 mx-4 -mt-16 lg:mt-0">
-              <h1 className="text-black tracking-wider font-semibold text-2xl max-w-[90vw] mb-4">
-                Besoin d&apos;un renseignement? Laissez-nous un message !
-              </h1>
-              <StaticForm />
+          <div className="max-w-[1400px] mx-auto w-full flex flex-col px-6 pt-16 pb-20 md:px-12 lg:px-16 lg:pt-20 lg:pb-28">
+            <h1 className="text-darkGrey text-4xl lg:text-5xl mb-10 lg:mb-14 tracking-wider font-semibold">
+              <span className="text-primary">C</span>ontactez-nous pour discuter de votre projet
+            </h1>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+              {/* Left: form */}
+              <div className="bg-white rounded-2xl shadow-xl px-8 pt-8 pb-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-8 h-[2px] bg-primary shrink-0" />
+                  <h3 className="text-darkGrey font-bold text-2xl tracking-wider">Envoyer un message</h3>
+                </div>
+                <StaticForm />
+              </div>
+
+              {/* Right: info */}
+              <div className="bg-white rounded-2xl shadow-xl p-8 flex flex-col gap-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-[2px] bg-primary shrink-0" />
+                  <h3 className="text-darkGrey font-bold text-2xl tracking-wider">Nous contacter</h3>
+                </div>
+
+                <div>
+                  <p className={`text-darkGrey/50 text-xs font-semibold uppercase tracking-widest mb-1 ${dosisFont.className}`}>Téléphone</p>
+                  <a href="tel:+33676508551" className={`text-darkGrey font-medium text-base hover:text-primary transition-colors duration-300 ${dosisFont.className}`}>
+                    +33 6 76 50 85 51
+                  </a>
+                </div>
+
+                <div className="border-t border-darkGrey/10 pt-4">
+                  <p className={`text-darkGrey/50 text-xs font-semibold uppercase tracking-widest mb-1 ${dosisFont.className}`}>Adresse</p>
+                  <p className={`text-darkGrey font-medium text-base leading-relaxed ${dosisFont.className}`}>
+                    Z.A. la Pommeraie, Rue des Indes<br />44780 Missillac
+                  </p>
+                </div>
+
+                <div className="border-t border-darkGrey/10 pt-4">
+                  <p className={`text-darkGrey/50 text-xs font-semibold uppercase tracking-widest mb-1 ${dosisFont.className}`}>Horaires</p>
+                  <p className={`text-darkGrey font-medium text-base ${dosisFont.className}`}>
+                    Ouvert du lundi au vendredi de 08h00 à 18h30
+                  </p>
+                  <p className={`text-darkGrey/40 text-sm mt-0.5 ${dosisFont.className}`}>Fermé le week-end</p>
+                </div>
+
+                <div className="border-t border-darkGrey/10 pt-4">
+                  <p className={`text-darkGrey/50 text-xs font-semibold uppercase tracking-widest mb-3 ${dosisFont.className}`}>Réseaux sociaux</p>
+                  <div className="flex gap-3">
+                    <a href="https://www.facebook.com/p/Charpente-Menuiserie-Durand-100063695462775/?locale=fr_FR" target="_blank" rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary group transition-colors duration-300">
+                      <FaFacebook size={17} className="text-primary group-hover:text-white transition-colors duration-300" />
+                    </a>
+                    <a href="https://www.instagram.com/charpentemenuiseriedurand/" target="_blank" rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary group transition-colors duration-300">
+                      <FaInstagram size={17} className="text-primary group-hover:text-white transition-colors duration-300" />
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div className="polygon hidden lg:block w-[120vw] lg:w-[49vw] h-[55px] bg-primary overflow-hidden absolute -scale-y-100 bottom-0 right-[105px] lg:left-[-200px] xl:left-[-240px] z-20"></div>

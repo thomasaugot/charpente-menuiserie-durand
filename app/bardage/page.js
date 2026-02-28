@@ -8,7 +8,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import BackToHomepageButton from "@/components/BackButton";
 import { motion } from "framer-motion";
-import PopupForm from "@/components/PopupForm";
 import ContactDetailsService from "@/components/ContactDetailsService";
 import localFont from "next/font/local";
 
@@ -26,13 +25,8 @@ import img10 from "@/assets/img/bardage/img10.webp";
 const dosisFont = localFont({ src: "../../assets/fonts/Dosis-Medium.ttf" });
 
 function Bardage() {
-  const [isFormOpen, setIsFormOpen] = useState(false);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
-
-  const handleToggleForm = () => {
-    setIsFormOpen(!isFormOpen);
-  };
 
   return (
     <div className="h-full px-6 lg:px-36 py-[150px] flex flex-col gap-10 relative brick-bg min-h-[100vh]">
@@ -132,16 +126,12 @@ function Bardage() {
             >
               Des questions? Nous sommes là pour vous renseigner !
             </p>
-            <button
-              onClick={handleToggleForm}
-              className={`${dosisFont.className} primary-button flex primary-button-bg dark-shadow text-nowrap mx-auto`}
-            >
+            <a href="/#contact" className={`${dosisFont.className} primary-button flex primary-button-bg dark-shadow text-nowrap mx-auto`}>
               Nous Contacter
-            </button>
+            </a>
           </div>
         </div>
       </div>
-      <PopupForm isOpen={isFormOpen} closeModal={() => setIsFormOpen(false)} />
     </div>
   );
 }
