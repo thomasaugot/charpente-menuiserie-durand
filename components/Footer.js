@@ -156,7 +156,7 @@ const Footer = () => {
             <p className={`${dosisFont.className} text-sm text-lightGrey text-center`}>
               &copy; 2020 – {currentYear} Sarl Charpente Menuiserie Durand. Site développé par{" "}
               <a
-                href="https://thomasaugot.com/"
+                href="https://www.helloimtom.dev/fr"
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-white transition-colors underline underline-offset-2"
