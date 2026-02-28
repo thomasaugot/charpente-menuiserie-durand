@@ -142,6 +142,6 @@ export default function ServicePage({ params }) {
   );
 }
 
-export function generateStaticParams() {
-  return slugs.map((slug) => ({ slug }));
-}
+// export function generateStaticParams() {
+//   return slugs.map((slug) => ({ slug }));
+// }
