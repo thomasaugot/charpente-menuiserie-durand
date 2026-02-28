@@ -1,10 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaArrowLeft } from "react-icons/fa";
-import PopupForm from "@/components/PopupForm";
 import { dosisFont } from "@/lib/fonts";
 
 const sections = [
@@ -31,8 +29,6 @@ const sections = [
 ];
 
 export default function ConditionsGeneralesUtilisation() {
-  const [isFormOpen, setIsFormOpen] = useState(false);
-
   return (
     <div className="brick-bg min-h-screen pt-28 pb-24 px-5 md:px-10 lg:px-16">
       <div className="max-w-5xl mx-auto">
@@ -83,18 +79,15 @@ export default function ConditionsGeneralesUtilisation() {
           </p>
 
           <div className="mt-10 flex justify-start">
-            <button
-              type="button"
-              onClick={() => setIsFormOpen(true)}
+            <Link
+              href="/#contact"
               className={`${dosisFont.className} inline-flex items-center justify-center bg-primary text-white text-base font-bold tracking-wide px-8 py-3 rounded-full shadow-lg hover:bg-orange-600 active:scale-95 transition-all duration-200`}
             >
               Nous contacter
-            </button>
+            </Link>
           </div>
         </motion.section>
       </div>
-
-      <PopupForm isOpen={isFormOpen} closeModal={() => setIsFormOpen(false)} />
     </div>
   );
 }
