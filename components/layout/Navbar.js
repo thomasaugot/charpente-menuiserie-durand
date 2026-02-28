@@ -94,7 +94,7 @@ const Navbar = () => {
               >
                 {/* Header */}
                 <div className="flex items-center px-8 pt-6 pb-5 border-b border-white/70">
-                  <Image src="/logo.png" alt="CMD Durand" width={48} height={48} />
+                  <Image src="/img/logo.png" alt="CMD Durand" width={48} height={48} />
                 </div>
 
                 {/* Nav items */}
@@ -241,7 +241,7 @@ const Navbar = () => {
                 offset={-40}
                 className="inline-flex items-center h-full cursor-pointer"
               >
-                <Image src="/logo.png" alt="CMD Durand" width={180} height={44} className="block w-auto h-[44px]" />
+                <Image src="/img/logo.png" alt="CMD Durand" width={180} height={44} className="block w-auto h-[44px]" />
               </ScrollLink>
             </div>
 

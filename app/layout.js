@@ -284,7 +284,7 @@ export default function RootLayout({ children }) {
         <div className="relative">
           <Link href={"/"}>
             <Image
-              src="/logo.png"
+              src="/img/logo.png"
               alt="Logo Charpente Menuiserie Durand - Charpentier Missillac"
               width={180}
               height={52}
