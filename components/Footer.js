@@ -35,7 +35,14 @@ const Footer = () => {
   }, [inView]);
 
   return (
-    <footer ref={ref} id="footer" className="bg-dark-grey text-white">
+    <footer ref={ref} id="footer" className="relative bg-dark-grey text-white overflow-hidden">
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: 'url("https://www.transparenttextures.com/patterns/brick-wall.png")',
+          opacity: 0.18,
+        }}
+      />
       <div className="h-1 w-full bg-primary" />
 
       {isVisible && (
@@ -43,11 +50,11 @@ const Footer = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="container mx-auto px-6 pt-10 pb-6"
+          className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 pt-14 md:pt-16 pb-10 md:pb-12"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12 lg:gap-14 mb-12 md:mb-14">
             {/* Company identity */}
-            <motion.div variants={itemVariants} className="flex flex-col gap-4">
+            <motion.div variants={itemVariants} className="flex flex-col gap-5">
               <h3 className={`${dosisFont.className} text-primary text-2xl font-semibold`}>
                 Charpente Menuiserie Durand
               </h3>
@@ -58,7 +65,7 @@ const Footer = () => {
             </motion.div>
 
             {/* Contact */}
-            <motion.div variants={itemVariants} className="flex flex-col gap-4">
+            <motion.div variants={itemVariants} className="flex flex-col gap-5">
               <h4 className={`${dosisFont.className} text-primary text-sm uppercase tracking-widest`}>
                 Contact
               </h4>
@@ -100,7 +107,7 @@ const Footer = () => {
             </motion.div>
 
             {/* Social */}
-            <motion.div variants={itemVariants} className="flex flex-col gap-4">
+            <motion.div variants={itemVariants} className="flex flex-col gap-5">
               <h4 className={`${dosisFont.className} text-primary text-sm uppercase tracking-widest`}>
                 Suivez-nous
               </h4>
@@ -138,8 +145,8 @@ const Footer = () => {
           </div>
 
           {/* Bottom bar */}
-          <div className="border-t border-white/10 pt-5 flex flex-col sm:flex-row justify-between items-center gap-3">
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-5 text-center">
+          <div className="border-t border-white/10 pt-6 md:pt-7 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 text-center">
               <a
                 href="/politique-de-confidentialite"
                 className={`${dosisFont.className} text-sm text-light-grey hover:text-white transition-colors`}

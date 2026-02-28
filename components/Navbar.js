@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { Link as ScrollLink } from "react-scroll";
 import { motion, AnimatePresence } from "framer-motion";
+import { FiChevronDown } from "react-icons/fi";
 
 import { FaPhoneAlt, FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa6";
@@ -20,11 +22,26 @@ const navItems = [
   { id: 5, text: "Contact", target: "contact" },
 ];
 
+const servicesSubmenu = [
+  { slug: "charpente-traditionelle", title: "Charpente traditionnelle" },
+  { slug: "charpente-industrielle", title: "Charpente industrielle" },
+  { slug: "extension-ou-maison-ossature", title: "Extension / maison ossature" },
+  { slug: "preau", title: "Préau" },
+  { slug: "carport", title: "Carport" },
+  { slug: "terrasse", title: "Terrasse" },
+  { slug: "amenagement-des-combles", title: "Aménagement des combles" },
+  { slug: "menuiserie-exterieure", title: "Menuiserie extérieure" },
+  { slug: "bardage", title: "Bardage" },
+  { slug: "solivage-porteur", title: "Solivage porteur" },
+  { slug: "menuiserie-generale", title: "Menuiserie générale" },
+];
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState("home");
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   // Single scroll listener for both scrolled state and active section
   useEffect(() => {
@@ -63,6 +80,12 @@ const Navbar = () => {
       document.body.style.overflow = "";
     };
   }, [isOpen, isMobile]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setMobileServicesOpen(false);
+    }
+  }, [isOpen]);
 
   return (
     <div>
@@ -107,24 +130,68 @@ const Navbar = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 + 0.05, duration: 0.25, ease: "easeOut" }}
                       >
-                        <ScrollLink
-                          to={item.target}
-                          smooth={true}
-                          duration={500}
-                          offset={-60}
-                          onClick={() => setIsOpen(false)}
-                          className="flex items-center gap-4 py-4 border-b border-white/70 cursor-pointer group"
-                        >
-                          <span className="text-sm font-mono text-dark-grey/55 w-6 shrink-0 select-none">
-                            {String(i + 1).padStart(2, "0")}
-                          </span>
-                          <span className={`text-2xl font-bold tracking-wide transition-colors duration-200 ${activeLink === item.target ? "text-primary" : "text-dark-grey/95 group-hover:text-primary"} ${dosisFont.className}`}>
-                            {item.text}
-                          </span>
-                          <span className={`ml-auto text-base transition-all duration-200 ${activeLink === item.target ? "text-primary" : "text-dark-grey/45 group-hover:text-primary group-hover:translate-x-1"}`}>
-                            →
-                          </span>
-                        </ScrollLink>
+                        {item.text === "Services" ? (
+                          <>
+                            <button
+                              type="button"
+                              onClick={() => setMobileServicesOpen((prev) => !prev)}
+                              className="w-full flex items-center gap-4 py-4 border-b border-white/70 cursor-pointer group"
+                            >
+                              <span className="text-sm font-mono text-dark-grey/55 w-6 shrink-0 select-none">
+                                {String(i + 1).padStart(2, "0")}
+                              </span>
+                              <span className={`text-2xl font-bold tracking-wide transition-colors duration-200 ${mobileServicesOpen ? "text-primary" : "text-dark-grey/95 group-hover:text-primary"} ${dosisFont.className}`}>
+                                {item.text}
+                              </span>
+                              <span className={`ml-auto text-base transition-all duration-200 ${mobileServicesOpen ? "text-primary rotate-90" : "text-dark-grey/45 group-hover:text-primary group-hover:translate-x-1"}`}>
+                                →
+                              </span>
+                            </button>
+
+                            <AnimatePresence initial={false}>
+                              {mobileServicesOpen && (
+                                <motion.ul
+                                  initial={{ opacity: 0, height: 0 }}
+                                  animate={{ opacity: 1, height: "auto" }}
+                                  exit={{ opacity: 0, height: 0 }}
+                                  transition={{ duration: 0.24, ease: "easeOut" }}
+                                  className="overflow-hidden border-b border-white/70"
+                                >
+                                  {servicesSubmenu.map((service) => (
+                                    <li key={service.slug}>
+                                      <Link
+                                        href={`/services/${service.slug}`}
+                                        onClick={() => setIsOpen(false)}
+                                        className={`${dosisFont.className} block pl-10 pr-2 py-2.5 text-base text-dark-grey/80 hover:text-primary transition-colors duration-200`}
+                                      >
+                                        {service.title}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </motion.ul>
+                              )}
+                            </AnimatePresence>
+                          </>
+                        ) : (
+                          <ScrollLink
+                            to={item.target}
+                            smooth={true}
+                            duration={500}
+                            offset={-60}
+                            onClick={() => setIsOpen(false)}
+                            className="flex items-center gap-4 py-4 border-b border-white/70 cursor-pointer group"
+                          >
+                            <span className="text-sm font-mono text-dark-grey/55 w-6 shrink-0 select-none">
+                              {String(i + 1).padStart(2, "0")}
+                            </span>
+                            <span className={`text-2xl font-bold tracking-wide transition-colors duration-200 ${activeLink === item.target ? "text-primary" : "text-dark-grey/95 group-hover:text-primary"} ${dosisFont.className}`}>
+                              {item.text}
+                            </span>
+                            <span className={`ml-auto text-base transition-all duration-200 ${activeLink === item.target ? "text-primary" : "text-dark-grey/45 group-hover:text-primary group-hover:translate-x-1"}`}>
+                              →
+                            </span>
+                          </ScrollLink>
+                        )}
                       </motion.li>
                     ))}
                   </ul>
@@ -182,14 +249,11 @@ const Navbar = () => {
       ) : (
         // Desktop pill navbar
         <div className="fixed top-5 w-full z-50 flex justify-center pointer-events-none">
-          <motion.div
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 1.0, ease: "easeOut" }}
-            className={`pointer-events-auto w-[min(1220px,calc(100vw-2rem))] flex items-center gap-2 rounded-full border px-3 py-1.5 transition-all duration-300 ${
+          <div
+            className={`pointer-events-auto h-[64px] w-[min(1220px,calc(100%-2rem))] flex items-center gap-2 rounded-full border px-3 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 ${
               scrolled
-                ? "bg-white/95 border-gray-200 shadow-xl backdrop-blur-md"
-                : "bg-white/80 border-white/40 shadow-lg backdrop-blur-sm"
+                ? "bg-white/22 border-white/30 shadow-[0_12px_32px_rgba(0,0,0,0.2)] backdrop-blur-xl"
+                : "bg-white/14 border-white/20 shadow-[0_10px_28px_rgba(0,0,0,0.16)] backdrop-blur-lg"
             }`}
           >
             <div className="w-[210px] shrink-0 pl-2 self-stretch flex items-center">
@@ -205,23 +269,64 @@ const Navbar = () => {
             </div>
 
             <div className="flex-1 flex items-center justify-center gap-1">
-              {navItems.map((item) => (
-                <ScrollLink
-                  key={item.id}
-                  to={item.target}
-                  spy={true}
-                  smooth={true}
-                  duration={500}
-                  offset={-40}
-                  className={`relative py-2 px-5 rounded-full text-sm tracking-wide font-semibold cursor-pointer transition-all duration-200 select-none ${
-                    activeLink === item.target
-                      ? "bg-primary text-white"
-                      : `text-gray-700 hover:text-primary hover:bg-primary/8 ${dosisFont.className}`
-                  } ${dosisFont.className}`}
-                >
-                  {item.text}
-                </ScrollLink>
-              ))}
+              {navItems.map((item) =>
+                item.text === "Services" ? (
+                  <div key={item.id} className="relative group">
+                    <ScrollLink
+                      to={item.target}
+                      spy={true}
+                      smooth={true}
+                      duration={500}
+                      offset={-40}
+                      className={`relative py-2 px-5 rounded-full text-base tracking-wide font-semibold cursor-pointer transition-all duration-200 select-none ${
+                        activeLink === item.target
+                          ? "bg-primary text-white"
+                          : `text-gray-700 hover:text-primary hover:bg-primary/8 ${dosisFont.className}`
+                      } ${dosisFont.className}`}
+                    >
+                      <span className="inline-flex items-center gap-1.5">
+                        Services
+                        <FiChevronDown className="text-sm transition-transform duration-200 group-hover:rotate-180" />
+                      </span>
+                    </ScrollLink>
+
+                    <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200">
+                      <div className="w-[560px] rounded-2xl border border-white/35 bg-white/90 backdrop-blur-xl shadow-[0_14px_36px_rgba(0,0,0,0.2)] p-4">
+                        <p className={`${dosisFont.className} text-dark-grey/60 text-xs uppercase tracking-[0.18em] px-2 pb-2`}>
+                          Tous nos services
+                        </p>
+                        <div className="grid grid-cols-2 gap-x-3 gap-y-1">
+                          {servicesSubmenu.map((service) => (
+                            <Link
+                              key={service.slug}
+                              href={`/services/${service.slug}`}
+                              className={`${dosisFont.className} block px-3 py-2 rounded-xl text-[15px] text-dark-grey/90 hover:bg-primary/10 hover:text-primary transition-colors duration-200`}
+                            >
+                              {service.title}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <ScrollLink
+                    key={item.id}
+                    to={item.target}
+                    spy={true}
+                    smooth={true}
+                    duration={500}
+                    offset={-40}
+                    className={`relative py-2 px-5 rounded-full text-base tracking-wide font-semibold cursor-pointer transition-all duration-200 select-none ${
+                      activeLink === item.target
+                        ? "bg-primary text-white"
+                        : `text-gray-700 hover:text-primary hover:bg-primary/8 ${dosisFont.className}`
+                    } ${dosisFont.className}`}
+                  >
+                    {item.text}
+                  </ScrollLink>
+                )
+              )}
             </div>
 
             <div className="w-[300px] shrink-0 flex items-center justify-end gap-2 pr-1">
@@ -243,7 +348,7 @@ const Navbar = () => {
                 <FaPhoneAlt size={13} />
               </a>
             </div>
-          </motion.div>
+          </div>
         </div>
       )}
 

@@ -78,6 +78,13 @@ export default function Home() {
           id="about"
           className="relative bg-dark-grey custom-pointer"
         >
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: 'url("https://www.transparenttextures.com/patterns/brick-wall.png")',
+              opacity: 0.18,
+            }}
+          />
           <div className="lg:hidden polygon w-[110vw] h-[45px] bg-primary overflow-hidden absolute transform -scale-y-100 top-0 -right-[120px] md:right-[-320px] z-20"></div>
           <div className="max-w-[1400px] mx-auto w-full flex flex-col px-8 pt-20 pb-28 md:px-16 md:pt-24 md:pb-36 lg:px-24 lg:pt-28 lg:pb-40">
             <h1 className="text-white text-4xl lg:text-5xl mb-12 lg:mb-16 tracking-wider font-medium">
@@ -116,7 +123,7 @@ export default function Home() {
               backgroundRepeat: "no-repeat",
             }}
           />
-          <div className="absolute inset-0 bg-black/55" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/32 via-black/26 to-black/22" />
 
           <div className="relative z-10">
             {/* Title */}
@@ -161,7 +168,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
               {/* Left: form */}
-              <div className="bg-white rounded-2xl shadow-xl px-8 pt-8 pb-8">
+              <div className="bg-white/22 backdrop-blur-xl border border-white/30 rounded-2xl shadow-[0_12px_32px_rgba(0,0,0,0.2)] px-8 pt-8 pb-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-8 h-[2px] bg-primary shrink-0" />
                   <h3 className="text-dark-grey font-bold text-2xl tracking-wider">Envoyer un message</h3>
@@ -170,7 +177,7 @@ export default function Home() {
               </div>
 
               {/* Right: info */}
-              <div className="bg-white rounded-2xl shadow-xl p-8 flex flex-col gap-6">
+              <div className="bg-white/22 backdrop-blur-xl border border-white/30 rounded-2xl shadow-[0_12px_32px_rgba(0,0,0,0.2)] p-8 flex flex-col gap-6">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-[2px] bg-primary shrink-0" />
                   <h3 className="text-dark-grey font-bold text-2xl tracking-wider">Nous contacter</h3>

@@ -41,7 +41,7 @@ const Hero = () => {
       />
 
       {/* Pill-shaped glass card */}
-      <div className="relative z-10 flex flex-col gap-6 max-w-3xl bg-white/10 backdrop-blur-md border border-white/15 rounded-[3rem] px-12 py-10 md:px-16 md:py-12">
+      <div className="relative z-10 flex flex-col gap-6 max-w-auto bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl px-12 py-10 md:px-16 md:py-12">
 
         {/* Eyebrow tag */}
         <motion.div
@@ -59,7 +59,7 @@ const Hero = () => {
 
         {/* Title */}
         <motion.h1
-          className="text-left text-6xl md:text-7xl lg:text-8xl gradient-text leading-tight"
+          className="text-left text-6xl md:text-7xl lg:text-8xl gradient-text leading-tight md:text-nowrap"
           variants={fadeUp}
           initial="hidden"
           animate="visible"
