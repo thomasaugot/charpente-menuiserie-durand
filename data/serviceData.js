@@ -72,7 +72,6 @@ export const services = {
     images: [
       "/img/charpente-industrielle/img1.webp",
       "/img/charpente-industrielle/img2.webp",
-      "/img/charpente-industrielle/img3.webp",
       "/img/charpente-industrielle/img4.webp",
       "/img/charpente-industrielle/img5.webp",
       "/img/charpente-industrielle/img6.webp",
@@ -159,7 +158,6 @@ export const services = {
       "Offrez une protection élégante à votre véhicule avec notre service de construction de carports. Chez Charpente Menuiserie Durand, nous comprenons l'importance de préserver votre voiture des éléments extérieurs tout en ajoutant une touche esthétique à votre propriété. Un carport bien conçu offre non seulement une protection contre les intempéries, mais constitue également un ajout fonctionnel et attrayant à votre espace extérieur. Que vous recherchiez un design moderne, classique ou sur mesure, notre équipe d'experts est là pour vous aider à créer un carport qui répond à vos besoins et s'harmonise avec le style de votre maison.",
     images: [
       "/img/carport/img1.webp",
-      "/img/carport/img2.webp",
       "/img/carport/img3.webp",
       "/img/carport/img4.webp",
       "/img/carport/img5.webp",
@@ -331,7 +329,6 @@ export const services = {
       "Que ce soit pour la fabrication sur mesure de meubles, la pose de fenêtres et portes, ou la création d'éléments de décoration intérieure, notre équipe expérimentée met tout son savoir-faire au service de vos projets. Nous comprenons que chaque détail compte, c'est pourquoi nous accordons une attention particulière à la sélection des matériaux et à la précision de la fabrication. Faites confiance à Charpente Menuiserie Durand pour tous vos besoins en menuiserie générale, et laissez-nous transformer votre vision en réalité, avec passion et expertise.",
     images: [
       "/img/menuiserie-générale/img1.webp",
-      "/img/menuiserie-générale/img2.webp",
       "/img/menuiserie-générale/img3.webp",
       "/img/menuiserie-générale/img4.webp",
     ],
