@@ -73,17 +73,17 @@ const LAYOUT_SETS = [
 ];
 
 const services = [
-  { id: 1,  title: "Charpente traditionnelle",    endPoint: "/charpente-traditionelle",      panels: [charpenteTrad1, charpenteTrad2, charpenteTrad3] },
-  { id: 2,  title: "Charpente industrielle",      endPoint: "/charpente-industrielle",       panels: [charpenteIndus1, charpenteIndus2, charpenteIndus3] },
-  { id: 3,  title: "Extension / maison ossature", endPoint: "/extension-ou-maison-ossature", panels: [ossature1, ossature2, ossature3] },
-  { id: 4,  title: "Préau",                       endPoint: "/preau",                        panels: [preau1, preau2, preau3] },
-  { id: 5,  title: "Carport",                     endPoint: "/carport",                      panels: [carport1, carport2, carport3] },
-  { id: 6,  title: "Terrasse",                    endPoint: "/terrasse",                     panels: [terrasse1, terrasse2, terrasse3] },
-  { id: 7,  title: "Aménagement des combles",     endPoint: "/amenagement-des-combles",      panels: [combles1, combles2, combles3] },
-  { id: 8,  title: "Menuiserie extérieure",       endPoint: "/menuiserie-exterieure",        panels: [menuiserieExt1, menuiserieExt2, menuiserieExt3] },
-  { id: 9,  title: "Bardages",                    endPoint: "/bardage",                      panels: [bardage1, bardage2, bardage3] },
-  { id: 10, title: "Solivage porteur",            endPoint: "/solivage-porteur",             panels: [solivage1, solivage2, solivage3] },
-  { id: 11, title: "Menuiserie Générale",         endPoint: "/menuiserie-generale",          panels: [menuiserieG1, menuiserieG2, menuiserieG3] },
+  { id: 1,  title: "Charpente traditionnelle",    endPoint: "/services/charpente-traditionelle",      panels: [charpenteTrad1, charpenteTrad2, charpenteTrad3] },
+  { id: 2,  title: "Charpente industrielle",      endPoint: "/services/charpente-industrielle",       panels: [charpenteIndus1, charpenteIndus2, charpenteIndus3] },
+  { id: 3,  title: "Extension / maison ossature", endPoint: "/services/extension-ou-maison-ossature", panels: [ossature1, ossature2, ossature3] },
+  { id: 4,  title: "Préau",                       endPoint: "/services/preau",                        panels: [preau1, preau2, preau3] },
+  { id: 5,  title: "Carport",                     endPoint: "/services/carport",                      panels: [carport1, carport2, carport3] },
+  { id: 6,  title: "Terrasse",                    endPoint: "/services/terrasse",                     panels: [terrasse1, terrasse2, terrasse3] },
+  { id: 7,  title: "Aménagement des combles",     endPoint: "/services/amenagement-des-combles",      panels: [combles1, combles2, combles3] },
+  { id: 8,  title: "Menuiserie extérieure",       endPoint: "/services/menuiserie-exterieure",        panels: [menuiserieExt1, menuiserieExt2, menuiserieExt3] },
+  { id: 9,  title: "Bardages",                    endPoint: "/services/bardage",                      panels: [bardage1, bardage2, bardage3] },
+  { id: 10, title: "Solivage porteur",            endPoint: "/services/solivage-porteur",             panels: [solivage1, solivage2, solivage3] },
+  { id: 11, title: "Menuiserie Générale",         endPoint: "/services/menuiserie-generale",          panels: [menuiserieG1, menuiserieG2, menuiserieG3] },
 ];
 
 const popSpring = { type: "spring", stiffness: 280, damping: 22 };
@@ -109,7 +109,7 @@ const Services = () => {
             <Link
               href={service.endPoint}
               onMouseEnter={() => setActiveIndex(i)}
-              className={`group flex items-center justify-between py-4 lg:py-5 border-b border-white/10 cursor-pointer transition-colors duration-200 ${
+              className={`group flex w-full items-center justify-between py-4 lg:py-5 border-b border-white/10 cursor-pointer transition-colors duration-200 ${
                 activeIndex === i ? "text-primary" : "text-white/70 hover:text-white"
               }`}
             >

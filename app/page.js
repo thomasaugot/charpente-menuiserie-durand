@@ -8,7 +8,6 @@ import TestimonialItem from "@/components/TestimonialItem";
 import GoogleWidget from "@/components/GoogleWidget";
 import Navbar from "@/components/Navbar";
 import StaticForm from "@/components/StaticForm";
-import ContactDetails from "@/components/ContactDetails";
 import Hero from "@/components/Hero";
 import woodBg from "/assets/img/woodbg.jpg";
 import { useEffect, useState } from "react";
@@ -72,7 +71,6 @@ export default function Home() {
   return (
     <Template>
       <main className="flex flex-col">
-        <ContactDetails />
         <Navbar />
         <Hero />
 

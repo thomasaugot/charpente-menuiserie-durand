@@ -56,6 +56,14 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  useEffect(() => {
+    if (!isMobile) return;
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen, isMobile]);
+
   return (
     <div>
       {isMobile ? (
@@ -82,10 +90,10 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.25, ease: "easeOut" }}
-                className="fixed inset-0 z-40 bg-white flex flex-col"
+                className="fixed inset-0 z-40 bg-[rgba(245,247,250,0.74)] backdrop-blur-xl flex flex-col"
               >
                 {/* Header */}
-                <div className="flex items-center px-8 pt-6 pb-5 border-b border-gray-100">
+                <div className="flex items-center px-8 pt-6 pb-5 border-b border-white/70">
                   <Image src={logoBig} alt="CMD Durand" height={48} />
                 </div>
 
@@ -105,15 +113,15 @@ const Navbar = () => {
                           duration={500}
                           offset={-60}
                           onClick={() => setIsOpen(false)}
-                          className="flex items-center gap-4 py-4 border-b border-gray-100 cursor-pointer group"
+                          className="flex items-center gap-4 py-4 border-b border-white/70 cursor-pointer group"
                         >
-                          <span className="text-sm font-mono text-gray-300 w-6 shrink-0 select-none">
+                          <span className="text-sm font-mono text-darkGrey/55 w-6 shrink-0 select-none">
                             {String(i + 1).padStart(2, "0")}
                           </span>
-                          <span className={`text-2xl font-bold tracking-wide transition-colors duration-200 ${activeLink === item.target ? "text-primary" : "text-darkGrey group-hover:text-primary"} ${dosisFont.className}`}>
+                          <span className={`text-2xl font-bold tracking-wide transition-colors duration-200 ${activeLink === item.target ? "text-primary" : "text-darkGrey/95 group-hover:text-primary"} ${dosisFont.className}`}>
                             {item.text}
                           </span>
-                          <span className={`ml-auto text-base transition-all duration-200 ${activeLink === item.target ? "text-primary" : "text-gray-300 group-hover:text-primary group-hover:translate-x-1"}`}>
+                          <span className={`ml-auto text-base transition-all duration-200 ${activeLink === item.target ? "text-primary" : "text-darkGrey/45 group-hover:text-primary group-hover:translate-x-1"}`}>
                             →
                           </span>
                         </ScrollLink>
@@ -127,7 +135,7 @@ const Navbar = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.35, duration: 0.25 }}
-                  className="px-8 pb-10 pt-5 border-t border-gray-100 flex flex-col gap-3"
+                  className="px-8 pb-10 pt-5 border-t border-white/70 flex flex-col gap-3"
                 >
                   <ScrollLink
                     to="contact"
@@ -141,18 +149,18 @@ const Navbar = () => {
                   <div className="flex items-center justify-center gap-3">
                     <a
                       href="tel:+33676508551"
-                      className={`flex items-center gap-2 text-darkGrey/50 text-sm font-medium py-2 hover:text-primary transition-colors duration-200 ${dosisFont.className}`}
+                      className={`flex items-center gap-2 text-darkGrey/85 text-sm font-medium py-2 hover:text-primary transition-colors duration-200 ${dosisFont.className}`}
                     >
                       <FaPhoneAlt size={13} color="#f37139" />
                       +33 6 76 50 85 51
                     </a>
-                    <span className="w-px h-4 bg-gray-200" />
+                    <span className="w-px h-4 bg-darkGrey/20" />
                     <a
                       href="https://www.facebook.com/profile.php?id=100063695462775"
                       target="_blank"
                       rel="noreferrer"
                       aria-label="Facebook"
-                      className="text-darkGrey/30 hover:text-primary transition-colors duration-200 p-3"
+                      className="text-darkGrey/65 hover:text-primary transition-colors duration-200 p-3"
                     >
                       <FaFacebook size={22} />
                     </a>
@@ -161,7 +169,7 @@ const Navbar = () => {
                       target="_blank"
                       rel="noreferrer"
                       aria-label="Instagram"
-                      className="text-darkGrey/30 hover:text-primary transition-colors duration-200 p-3"
+                      className="text-darkGrey/65 hover:text-primary transition-colors duration-200 p-3"
                     >
                       <FaInstagram size={22} />
                     </a>
@@ -173,45 +181,68 @@ const Navbar = () => {
         </>
       ) : (
         // Desktop pill navbar
-        <div className="fixed top-[68px] w-full z-50 flex justify-center pointer-events-none">
+        <div className="fixed top-5 w-full z-50 flex justify-center pointer-events-none">
           <motion.div
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 1.0, ease: "easeOut" }}
-            className={`pointer-events-auto flex items-center gap-1 rounded-full border px-2 py-1.5 transition-all duration-300 ${
+            className={`pointer-events-auto w-[min(1220px,calc(100vw-2rem))] flex items-center gap-2 rounded-full border px-3 py-1.5 transition-all duration-300 ${
               scrolled
-                ? "bg-white/95 border-gray-200 shadow-lg backdrop-blur-md"
-                : "bg-white/80 border-white/40 shadow-md backdrop-blur-sm"
+                ? "bg-white/95 border-gray-200 shadow-xl backdrop-blur-md"
+                : "bg-white/80 border-white/40 shadow-lg backdrop-blur-sm"
             }`}
           >
-            {navItems.map((item) => (
+            <div className="w-[210px] shrink-0 pl-2 self-stretch flex items-center">
               <ScrollLink
-                key={item.id}
-                to={item.target}
-                spy={true}
+                to="home"
                 smooth={true}
                 duration={500}
-                offset={0}
-                className={`relative py-2 px-4 rounded-full text-sm tracking-wide font-semibold cursor-pointer transition-all duration-200 select-none ${
-                  activeLink === item.target
-                    ? "bg-primary text-white"
-                    : `text-gray-700 hover:text-primary hover:bg-primary/8 ${dosisFont.className}`
-                } ${dosisFont.className}`}
+                offset={-40}
+                className="inline-flex items-center h-full cursor-pointer"
               >
-                {item.text}
+                <Image src={logoBig} alt="CMD Durand" height={44} className="block w-auto h-[44px]" />
               </ScrollLink>
-            ))}
+            </div>
 
-            <div className="w-px h-5 bg-gray-200 mx-1" />
+            <div className="flex-1 flex items-center justify-center gap-1">
+              {navItems.map((item) => (
+                <ScrollLink
+                  key={item.id}
+                  to={item.target}
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                  offset={-40}
+                  className={`relative py-2 px-5 rounded-full text-sm tracking-wide font-semibold cursor-pointer transition-all duration-200 select-none ${
+                    activeLink === item.target
+                      ? "bg-primary text-white"
+                      : `text-gray-700 hover:text-primary hover:bg-primary/8 ${dosisFont.className}`
+                  } ${dosisFont.className}`}
+                >
+                  {item.text}
+                </ScrollLink>
+              ))}
+            </div>
 
-            <ScrollLink
-              to="contact"
-              smooth={true}
-              duration={500}
-              className={`px-5 py-2 rounded-full bg-primary text-white text-sm font-semibold tracking-wide transition-all duration-200 hover:bg-orange-600 active:scale-95 cursor-pointer ${dosisFont.className}`}
-            >
-              Demander un Devis
-            </ScrollLink>
+            <div className="w-[300px] shrink-0 flex items-center justify-end gap-2 pr-1">
+              <ScrollLink
+                to="contact"
+                smooth={true}
+                duration={500}
+                offset={-40}
+                className={`px-6 py-2 rounded-full bg-primary text-white text-sm font-semibold tracking-wide transition-all duration-200 hover:bg-orange-600 active:scale-95 cursor-pointer ${dosisFont.className}`}
+              >
+                Demander un Devis
+              </ScrollLink>
+
+              <a
+                href="tel:+33676508551"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gray-200 text-darkGrey/70 hover:text-primary hover:border-primary/40 transition-colors duration-200"
+                aria-label="Appeler"
+              >
+                <FaPhoneAlt size={13} />
+              </a>
+            </div>
           </motion.div>
         </div>
       )}

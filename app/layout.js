@@ -1,4 +1,3 @@
-import { Inter } from "next/font/google";
 import Head from "next/head";
 import "./globals.css";
 import Footer from "@/components/Footer";
@@ -11,7 +10,6 @@ import localFont from "next/font/local";
 
 library.add(fab);
 
-const inter = Inter({ subsets: ["latin"] });
 const gotamFont = localFont({ src: "../assets/fonts/Gotham Nights.otf" });
 const dosisFont = localFont({ src: "../assets/fonts/Dosis-Regular.ttf" });
 
@@ -217,14 +215,13 @@ export default function RootLayout({ children }) {
       </Head>
       <body className={`${gotamFont.className} bg-white`} hrefLang="fr">
         <div className="relative">
-          <div className="fixed lg:absolute z-40 lg:z-0 w-[100vw] h-[100px] backdrop-blur-[7px] px-10"></div>
           <Link href={"/"}>
             <Image
               src={logo}
               width={"auto"}
               height={"auto"}
               alt="Logo Charpente Menuiserie Durand - Charpentier Missillac"
-              className="fixed w-[230px] h-auto z-40 lg:z-10 block lg:absolute py-3 px-8"
+              className="fixed w-[180px] h-auto z-40 block lg:hidden py-3 px-5"
             />
           </Link>
         </div>

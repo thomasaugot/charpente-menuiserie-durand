@@ -20,6 +20,18 @@ import { motion } from "framer-motion";
 
 export default function Template({ children }) {
   useEffect(() => {
+    const { hash } = window.location;
+
+    if (hash) {
+      const target = document.querySelector(hash);
+      if (target) {
+        requestAnimationFrame(() => {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+        return;
+      }
+    }
+
     window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
 
