@@ -1,35 +1,41 @@
-import { slugs } from "@/app/services/serviceData";
+import { services, slugs } from "@/data/serviceData";
+
+const BASE_URL = "https://www.cmdurand.fr";
+const LAST_BUILD = new Date("2025-06-01");
 
 export default function sitemap() {
-  const baseUrl = "https://www.cmdurand.fr";
-
   const serviceEntries = slugs.map((slug) => ({
-    url: `${baseUrl}/services/${slug}`,
-    lastModified: new Date(),
+    url: `${BASE_URL}/services/${slug}`,
+    lastModified: LAST_BUILD,
     changeFrequency: "monthly",
     priority: 0.8,
+    images: services[slug].images.map((img) => ({
+      url: `${BASE_URL}${img}`,
+      title: services[slug].title,
+    })),
   }));
 
   return [
-    // Page d'accueil - Priorité maximale
     {
-      url: baseUrl,
-      lastModified: new Date(),
+      url: BASE_URL,
+      lastModified: LAST_BUILD,
       changeFrequency: "weekly",
       priority: 1.0,
+      images: [
+        { url: `${BASE_URL}/img/home.webp`, title: "Charpente Menuiserie Durand — Missillac" },
+        { url: `${BASE_URL}/img/logo.png`,  title: "Logo Charpente Menuiserie Durand" },
+      ],
     },
     ...serviceEntries,
-
-    // Pages légales
     {
-      url: `${baseUrl}/politique-de-confidentialite`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/politique-de-confidentialite`,
+      lastModified: LAST_BUILD,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
-      url: `${baseUrl}/conditions-generales-utilisation`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/conditions-generales-utilisation`,
+      lastModified: LAST_BUILD,
       changeFrequency: "yearly",
       priority: 0.3,
     },

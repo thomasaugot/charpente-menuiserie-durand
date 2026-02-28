@@ -3,11 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import localFont from "next/font/local";
 import { FaArrowLeft } from "react-icons/fa";
 import PopupForm from "@/components/PopupForm";
-
-const dosisFont = localFont({ src: "../../assets/fonts/Dosis-Regular.ttf" });
+import { dosisFont } from "@/lib/fonts";
 
 const sections = [
   {

@@ -3,15 +3,15 @@ export default function robots() {
   const isProduction = process.env.NODE_ENV === 'production'
   
   // Block everything in development/staging
-  if (!isProduction) {
-    return {
-      rules: {
-        userAgent: '*',
-        disallow: '/',
-      },
-      sitemap: `${baseUrl}/sitemap.xml`,
-    }
-  }
+  // if (!isProduction) {
+  //   return {
+  //     rules: {
+  //       userAgent: '*',
+  //       disallow: '/',
+  //     },
+  //     sitemap: `${baseUrl}/sitemap.xml`,
+  //   }
+  // }
 
   // Production rules
   return {

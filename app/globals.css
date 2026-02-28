@@ -1,45 +1,20 @@
 @import "tailwindcss";
 
+/* ─── Design tokens ──────────────────────────────────────────────────────── */
+
 @theme {
-  --color-white: #ffffff;
-  --color-primary: #f37139;
-  --color-secondary: #ffbf00;
-  --color-light-grey: #d3d3d3;
-  --color-dark-grey: #3b3b3b;
-  --shadow-custom-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --color-white:       #ffffff;
+  --color-primary:     #f37139;
+  --color-secondary:   #ffbf00;
+  --color-light-grey:  #d3d3d3;
+  --color-dark-grey:   #3b3b3b;
+
+  --shadow-custom-light:  0 2px 4px rgba(0, 0, 0, 0.1);
   --shadow-custom-medium: 0 4px 8px rgba(0, 0, 0, 0.2);
-  --shadow-custom-dark: 0 8px 16px rgba(0, 0, 0, 0.4);
+  --shadow-custom-dark:   0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
-@keyframes marquee-left {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-@keyframes marquee-right {
-  0%   { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
-}
-.animate-marquee-left {
-  animation: marquee-left 80s linear infinite;
-}
-.animate-marquee-right {
-  animation: marquee-right 90s linear infinite;
-}
-.marquee-track:hover .animate-marquee-left,
-.marquee-track:hover .animate-marquee-right {
-  animation-play-state: paused;
-}
-
-@layer utilities {
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-}
-
+/* ─── Base ───────────────────────────────────────────────────────────────── */
 
 html,
 body {
@@ -59,233 +34,53 @@ body {
   }
 }
 
+/* ─── Utilities ──────────────────────────────────────────────────────────── */
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ─── Marquee ────────────────────────────────────────────────────────────── */
+
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.animate-marquee-left  { animation: marquee-left  80s linear infinite; }
+.animate-marquee-right { animation: marquee-right 90s linear infinite; }
+
+.marquee-track:hover .animate-marquee-left,
+.marquee-track:hover .animate-marquee-right {
+  animation-play-state: paused;
+}
+
+/* ─── Components ─────────────────────────────────────────────────────────── */
+
 .gradient-text {
-  background: #f37139;
   background: linear-gradient(to right, #f37139 0%, #000000 30%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.primary-button {
-  padding: 6px 20px;
-  background: transparent;
-  outline: none !important;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  -webkit-box-shadow: 0px 4px 15px -4px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 4px 15px -4px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 4px 15px -4px rgba(0, 0, 0, 0.75);
-}
-
-.primary-button-bg {
-  border: 2px solid rgb(255, 255, 255);
-  z-index: 1;
-  color: white;
-  @apply bg-primary rounded-lg;
-}
-
-.primary-button-bg:after {
-  position: absolute;
-  content: "";
-  width: 0;
-  height: 100%;
-  top: 0;
-  left: 0;
-  direction: rtl;
-  z-index: -1;
-  @apply bg-dark-grey rounded-lg;
-  transition: all 0.3s ease;
-}
-
-.primary-button-bg:hover {
-  color: #fff;
-}
-
-.primary-button-bg:hover:after {
-  left: auto;
-  right: 0;
-  width: 100%;
-}
-
-.primary-button-bg:active {
-  top: 2px;
-}
-
-.secondary-button {
-  padding: 10px 25px;
-  background: transparent;
-  outline: none !important;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  -webkit-box-shadow: 0px 4px 15px -4px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 4px 15px -4px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 4px 15px -4px rgba(0, 0, 0, 0.75);
-}
-
-.secondary-button-bg {
-  border: 2px solid rgb(255, 255, 255);
-  z-index: 1;
-  color: black;
-  @apply bg-white rounded-lg;
-}
-
-.secondary-button-bg:after {
-  position: absolute;
-  content: "";
-  width: 0;
-  height: 100%;
-  top: 0;
-  left: 0;
-  direction: rtl;
-  z-index: -1;
-  @apply bg-primary rounded-lg;
-  transition: all 0.3s ease;
-}
-
-.secondary-button-bg:hover {
-  color: #fff;
-}
-
-.secondary-button-bg:hover:after {
-  left: auto;
-  right: 0;
-  width: 100%;
-}
-
-.secondary-button-bg:active {
-  top: 2px;
-}
-
-/* Styles for the carousel and its pagination bullets */
-
-.swiper-pagination-bullet {
-  width: 7px !important;
-  height: 7px !important;
-  background-color: #3b3b3b !important;
-  opacity: 0.5 !important;
-  border-radius: 50px !important;
-  margin: 0 5px 0 0 !important;
-  cursor: pointer !important;
-
-  @media (min-width: 768px) {
-    margin: 0 5px !important;
-  }
-}
-
-.swiper-pagination-bullet-active {
-  opacity: 1 !important;
-  background: #f37139 !important;
-}
-
-/* custom-shadow */
-
-.form-shadow {
-  @media (min-width: 1024px) {
-    border-radius: 16px;
-    background: #ffffff;
-    box-shadow: 18px 18px 48px #bdbdbd, -18px -18px 48px #ffffff;
-  }
-}
-
-.widget-glow {
-  border-radius: 16px;
-  background: #ffffff;
-  box-shadow: 18px 18px 48px #bdbdbd, -18px -18px 48px #ffffff;
-}
-
-.image-shadow {
-  -webkit-box-shadow: 0px 10px 17px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 10px 17px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 10px 17px 0px rgba(0, 0, 0, 0.75);
-}
-
-.dark-shadow {
-  -webkit-box-shadow: 10px 10px 17px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 10px 10px 17px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 10px 10px 17px 0px rgba(0, 0, 0, 0.75);
-}
-
-.primary-filter {
-  background-color: rgb(243, 113, 57, 0.3);
-}
-
-.grey-filter {
-  background-color: rgb(59, 59, 59, 0.5);
-  width: 100%;
-  height: 100%;
-}
-
-.custom-pointer {
-  cursor: auto;
-}
+.custom-pointer { cursor: auto; }
 
 .polygon {
   clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
 }
 
-.filter-home {
-  opacity: 0.3;
-  z-index: 0;
-}
-
 .brick-bg {
   background-color: #ffffff;
-  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
-}
-
-.overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 30vh;
-  z-index: 100;
-}
-
-.text {
-  font-size: 1.5rem;
-  display: flex;
-  position: absolute;
-  bottom: 20vh;
-  user-select: none;
-
-  @media (min-width: 768px) {
-    font-size: 2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-
-.wrapper {
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-top: 2px;
-
-  @media (min-width: 768px) {
-    padding-left: 2px;
-    padding-right: 2px;
-  }
-}
-
-.letter {
-  transition: ease-out 1s;
-  transform: translateY(30%);
-}
-
-.shadow {
-  transform: scale(1, -1);
-  color: #999;
-  transition: ease-in 5s, ease-out 5s;
-}
-
-.text:hover .letter {
-  transform: translateY(-2%);
-}
-
-.text:hover .shadow {
-  opacity: 0;
-  transform: translateY(2%);
+  background-image: url("/img/brick-wall.png");
 }

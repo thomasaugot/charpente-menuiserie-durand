@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 2678400,
+    deviceSizes: [640, 768, 1024, 1280, 1536, 1920],
+  },
+};
 
 export default nextConfig;
