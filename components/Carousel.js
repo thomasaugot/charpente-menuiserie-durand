@@ -163,7 +163,7 @@ const Carousel = () => {
         {!allVisible ? (
           <button
             onClick={showMore}
-            className="flex flex-col items-center gap-1 text-darkGrey font-semibold tracking-wide hover:text-primary transition-colors duration-200"
+            className="flex flex-col items-center gap-1 text-dark-grey font-semibold tracking-wide hover:text-primary transition-colors duration-200"
           >
             <span>Voir plus</span>
             <FiChevronDown className="text-2xl animate-bounce" />
@@ -171,7 +171,7 @@ const Carousel = () => {
         ) : (
           <button
             onClick={showLess}
-            className="flex flex-col items-center gap-1 text-darkGrey font-semibold tracking-wide hover:text-primary transition-colors duration-200"
+            className="flex flex-col items-center gap-1 text-dark-grey font-semibold tracking-wide hover:text-primary transition-colors duration-200"
           >
             <FiChevronUp className="text-2xl" />
             <span>Voir moins</span>

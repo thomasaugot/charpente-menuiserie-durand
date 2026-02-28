@@ -1,5 +1,5 @@
 import { IoMdStar } from "react-icons/io";
-import google from "/assets/img/google.png";
+import google from "@/assets/img/google.png";
 import Image from "next/image";
 import localFont from "next/font/local";
 

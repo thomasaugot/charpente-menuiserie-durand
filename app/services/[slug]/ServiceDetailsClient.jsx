@@ -79,7 +79,7 @@ export default function ServiceDetailsClient({ service, serviceCards = [] }) {
       <section className="max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-20 pt-28 pb-16">
         <Link
           href="/"
-          className={`${dosisFont.className} inline-flex items-center gap-2 text-darkGrey/70 hover:text-primary text-base tracking-widest uppercase transition-colors duration-200 mb-10`}
+          className={`${dosisFont.className} inline-flex items-center gap-2 text-dark-grey/70 hover:text-primary text-base tracking-widest uppercase transition-colors duration-200 mb-10`}
         >
           <FaArrowLeft size={11} />
           Retour a l&apos;accueil
@@ -95,11 +95,11 @@ export default function ServiceDetailsClient({ service, serviceCards = [] }) {
             <p className={`${dosisFont.className} text-primary/90 text-xs uppercase tracking-widest`}>
               Nos services
             </p>
-            <h1 className="text-darkGrey text-4xl lg:text-5xl tracking-wider font-medium leading-tight">
+            <h1 className="text-dark-grey text-4xl lg:text-5xl tracking-wider font-medium leading-tight">
               <span className="text-primary text-5xl lg:text-6xl">{firstLetter}</span>
               {restOfTitle}
             </h1>
-            <p className={`${dosisFont.className} text-darkGrey/90 text-base leading-relaxed`}>
+            <p className={`${dosisFont.className} text-dark-grey/90 text-base leading-relaxed`}>
               {description}
             </p>
             <div className="flex flex-col gap-2 pt-2">
@@ -111,7 +111,7 @@ export default function ServiceDetailsClient({ service, serviceCards = [] }) {
               </Link>
               <a
                 href="tel:+33676508551"
-                className={`${dosisFont.className} flex items-center justify-center gap-2 text-darkGrey/75 text-base py-2 hover:text-primary transition-colors duration-200`}
+                className={`${dosisFont.className} flex items-center justify-center gap-2 text-dark-grey/75 text-base py-2 hover:text-primary transition-colors duration-200`}
               >
                 <FaPhoneAlt size={12} color="#f37139" />
                 +33 6 76 50 85 51
@@ -185,8 +185,8 @@ export default function ServiceDetailsClient({ service, serviceCards = [] }) {
 
       {images.length > 1 && (
         <section className="max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-20 pb-24">
-          <div className="border-t border-darkGrey/10 pt-14 mb-10">
-            <h2 className="text-darkGrey text-4xl tracking-wider font-medium">
+          <div className="border-t border-dark-grey/10 pt-14 mb-10">
+            <h2 className="text-dark-grey text-4xl tracking-wider font-medium">
               <span className="text-primary text-5xl">N</span>os réalisations en photos
             </h2>
           </div>
@@ -219,7 +219,7 @@ export default function ServiceDetailsClient({ service, serviceCards = [] }) {
               <button
                 type="button"
                 onClick={toggleGallery}
-                className="flex flex-col items-center gap-1 text-darkGrey font-semibold tracking-wide hover:text-primary transition-colors duration-200"
+                className="flex flex-col items-center gap-1 text-dark-grey font-semibold tracking-wide hover:text-primary transition-colors duration-200"
               >
                 {isExpanded ? (
                   <>
@@ -240,8 +240,8 @@ export default function ServiceDetailsClient({ service, serviceCards = [] }) {
 
       {serviceCards.length > 0 && (
         <section className="max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-20 pb-24">
-          <div className="border-t border-darkGrey/10 pt-14 mb-10">
-            <h2 className="text-darkGrey text-3xl md:text-4xl tracking-wider font-medium">
+          <div className="border-t border-dark-grey/10 pt-14 mb-10">
+            <h2 className="text-dark-grey text-3xl md:text-4xl tracking-wider font-medium">
               <span className="text-primary text-5xl">D</span>écouvrez tous nos services
             </h2>
           </div>
@@ -257,10 +257,10 @@ export default function ServiceDetailsClient({ service, serviceCards = [] }) {
               >
                 <Link
                   href={`/services/${item.slug}`}
-                  className={`${dosisFont.className} group flex items-center justify-between py-3 border-b border-darkGrey/15 text-darkGrey/80 hover:text-primary transition-colors duration-200`}
+                  className={`${dosisFont.className} group flex items-center justify-between py-3 border-b border-dark-grey/15 text-dark-grey/80 hover:text-primary transition-colors duration-200`}
                 >
                   <span className="text-base md:text-lg font-semibold">{item.title}</span>
-                  <span className="text-lg text-darkGrey/45 group-hover:text-primary group-hover:translate-x-1 transition-all duration-200">
+                  <span className="text-lg text-dark-grey/45 group-hover:text-primary group-hover:translate-x-1 transition-all duration-200">
                     →
                   </span>
                 </Link>

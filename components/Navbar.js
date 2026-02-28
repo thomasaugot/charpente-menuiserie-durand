@@ -115,13 +115,13 @@ const Navbar = () => {
                           onClick={() => setIsOpen(false)}
                           className="flex items-center gap-4 py-4 border-b border-white/70 cursor-pointer group"
                         >
-                          <span className="text-sm font-mono text-darkGrey/55 w-6 shrink-0 select-none">
+                          <span className="text-sm font-mono text-dark-grey/55 w-6 shrink-0 select-none">
                             {String(i + 1).padStart(2, "0")}
                           </span>
-                          <span className={`text-2xl font-bold tracking-wide transition-colors duration-200 ${activeLink === item.target ? "text-primary" : "text-darkGrey/95 group-hover:text-primary"} ${dosisFont.className}`}>
+                          <span className={`text-2xl font-bold tracking-wide transition-colors duration-200 ${activeLink === item.target ? "text-primary" : "text-dark-grey/95 group-hover:text-primary"} ${dosisFont.className}`}>
                             {item.text}
                           </span>
-                          <span className={`ml-auto text-base transition-all duration-200 ${activeLink === item.target ? "text-primary" : "text-darkGrey/45 group-hover:text-primary group-hover:translate-x-1"}`}>
+                          <span className={`ml-auto text-base transition-all duration-200 ${activeLink === item.target ? "text-primary" : "text-dark-grey/45 group-hover:text-primary group-hover:translate-x-1"}`}>
                             →
                           </span>
                         </ScrollLink>
@@ -149,18 +149,18 @@ const Navbar = () => {
                   <div className="flex items-center justify-center gap-3">
                     <a
                       href="tel:+33676508551"
-                      className={`flex items-center gap-2 text-darkGrey/85 text-sm font-medium py-2 hover:text-primary transition-colors duration-200 ${dosisFont.className}`}
+                      className={`flex items-center gap-2 text-dark-grey/85 text-sm font-medium py-2 hover:text-primary transition-colors duration-200 ${dosisFont.className}`}
                     >
                       <FaPhoneAlt size={13} color="#f37139" />
                       +33 6 76 50 85 51
                     </a>
-                    <span className="w-px h-4 bg-darkGrey/20" />
+                    <span className="w-px h-4 bg-dark-grey/20" />
                     <a
                       href="https://www.facebook.com/profile.php?id=100063695462775"
                       target="_blank"
                       rel="noreferrer"
                       aria-label="Facebook"
-                      className="text-darkGrey/65 hover:text-primary transition-colors duration-200 p-3"
+                      className="text-dark-grey/65 hover:text-primary transition-colors duration-200 p-3"
                     >
                       <FaFacebook size={22} />
                     </a>
@@ -169,7 +169,7 @@ const Navbar = () => {
                       target="_blank"
                       rel="noreferrer"
                       aria-label="Instagram"
-                      className="text-darkGrey/65 hover:text-primary transition-colors duration-200 p-3"
+                      className="text-dark-grey/65 hover:text-primary transition-colors duration-200 p-3"
                     >
                       <FaInstagram size={22} />
                     </a>
@@ -237,7 +237,7 @@ const Navbar = () => {
 
               <a
                 href="tel:+33676508551"
-                className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gray-200 text-darkGrey/70 hover:text-primary hover:border-primary/40 transition-colors duration-200"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gray-200 text-dark-grey/70 hover:text-primary hover:border-primary/40 transition-colors duration-200"
                 aria-label="Appeler"
               >
                 <FaPhoneAlt size={13} />

@@ -9,7 +9,7 @@ import GoogleWidget from "@/components/GoogleWidget";
 import Navbar from "@/components/Navbar";
 import StaticForm from "@/components/StaticForm";
 import Hero from "@/components/Hero";
-import woodBg from "/assets/img/woodbg.jpg";
+import woodBg from "../assets/img/woodbg.jpg";
 import { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
 import Template from "./template";
@@ -76,7 +76,7 @@ export default function Home() {
 
         <section
           id="about"
-          className="relative bg-darkGrey custom-pointer"
+          className="relative bg-dark-grey custom-pointer"
         >
           <div className="lg:hidden polygon w-[110vw] h-[45px] bg-primary overflow-hidden absolute transform -scale-y-100 top-0 -right-[120px] md:right-[-320px] z-20"></div>
           <div className="max-w-[1400px] mx-auto w-full flex flex-col px-8 pt-20 pb-28 md:px-16 md:pt-24 md:pb-36 lg:px-24 lg:pt-28 lg:pb-40">
@@ -93,12 +93,12 @@ export default function Home() {
           className="relative brick-bg pb-20"
         >
           <div className="px-6 md:px-10 lg:px-14 pt-12 md:pt-16">
-            <h1 className="tracking-wide font-semibold text-4xl text-darkGrey text-center lg:text-left mb-0">
+            <h1 className="tracking-wide font-semibold text-4xl text-dark-grey text-center lg:text-left mb-0">
               <span className="text-primary text-6xl">N</span>os réalisations en quelques photos
             </h1>
           </div>
           <Carousel />
-          <div className="polygon w-[120vw] lg:w-[49vw] h-[45px] lg:h-[55px] bg-darkGrey overflow-hidden absolute -scale-y-100 bottom-0 right-[105px] lg:left-[-200px] xl:left-[-240px] z-20"></div>
+          <div className="polygon w-[120vw] lg:w-[49vw] h-[45px] lg:h-[55px] bg-dark-grey overflow-hidden absolute -scale-y-100 bottom-0 right-[105px] lg:left-[-200px] xl:left-[-240px] z-20"></div>
         </section>
 
         <section
@@ -155,7 +155,7 @@ export default function Home() {
         >
           <div className="polygon w-[110vw] lg:w-[49vw] h-[45px] lg:h-[55px] bg-primary overflow-hidden absolute -scale-y-100 top-0 -right-[120px] md:right-[-240px] lg:right-[-200px] xl:right-[-240px] z-20"></div>
           <div className="max-w-[1400px] mx-auto w-full flex flex-col px-6 pt-16 pb-20 md:px-12 lg:px-16 lg:pt-20 lg:pb-28">
-            <h1 className="text-darkGrey text-4xl lg:text-5xl mb-10 lg:mb-14 tracking-wider font-semibold">
+            <h1 className="text-dark-grey text-4xl lg:text-5xl mb-10 lg:mb-14 tracking-wider font-semibold">
               <span className="text-primary">C</span>ontactez-nous pour discuter de votre projet
             </h1>
 
@@ -164,7 +164,7 @@ export default function Home() {
               <div className="bg-white rounded-2xl shadow-xl px-8 pt-8 pb-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-8 h-[2px] bg-primary shrink-0" />
-                  <h3 className="text-darkGrey font-bold text-2xl tracking-wider">Envoyer un message</h3>
+                  <h3 className="text-dark-grey font-bold text-2xl tracking-wider">Envoyer un message</h3>
                 </div>
                 <StaticForm />
               </div>
@@ -173,33 +173,33 @@ export default function Home() {
               <div className="bg-white rounded-2xl shadow-xl p-8 flex flex-col gap-6">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-[2px] bg-primary shrink-0" />
-                  <h3 className="text-darkGrey font-bold text-2xl tracking-wider">Nous contacter</h3>
+                  <h3 className="text-dark-grey font-bold text-2xl tracking-wider">Nous contacter</h3>
                 </div>
 
                 <div>
-                  <p className={`text-darkGrey/50 text-xs font-semibold uppercase tracking-widest mb-1 ${dosisFont.className}`}>Téléphone</p>
-                  <a href="tel:+33676508551" className={`text-darkGrey font-medium text-base hover:text-primary transition-colors duration-300 ${dosisFont.className}`}>
+                  <p className={`text-dark-grey/50 text-xs font-semibold uppercase tracking-widest mb-1 ${dosisFont.className}`}>Téléphone</p>
+                  <a href="tel:+33676508551" className={`text-dark-grey font-medium text-base hover:text-primary transition-colors duration-300 ${dosisFont.className}`}>
                     +33 6 76 50 85 51
                   </a>
                 </div>
 
-                <div className="border-t border-darkGrey/10 pt-4">
-                  <p className={`text-darkGrey/50 text-xs font-semibold uppercase tracking-widest mb-1 ${dosisFont.className}`}>Adresse</p>
-                  <p className={`text-darkGrey font-medium text-base leading-relaxed ${dosisFont.className}`}>
+                <div className="border-t border-dark-grey/10 pt-4">
+                  <p className={`text-dark-grey/50 text-xs font-semibold uppercase tracking-widest mb-1 ${dosisFont.className}`}>Adresse</p>
+                  <p className={`text-dark-grey font-medium text-base leading-relaxed ${dosisFont.className}`}>
                     Z.A. la Pommeraie, Rue des Indes<br />44780 Missillac
                   </p>
                 </div>
 
-                <div className="border-t border-darkGrey/10 pt-4">
-                  <p className={`text-darkGrey/50 text-xs font-semibold uppercase tracking-widest mb-1 ${dosisFont.className}`}>Horaires</p>
-                  <p className={`text-darkGrey font-medium text-base ${dosisFont.className}`}>
+                <div className="border-t border-dark-grey/10 pt-4">
+                  <p className={`text-dark-grey/50 text-xs font-semibold uppercase tracking-widest mb-1 ${dosisFont.className}`}>Horaires</p>
+                  <p className={`text-dark-grey font-medium text-base ${dosisFont.className}`}>
                     Ouvert du lundi au vendredi de 08h00 à 18h30
                   </p>
-                  <p className={`text-darkGrey/40 text-sm mt-0.5 ${dosisFont.className}`}>Fermé le week-end</p>
+                  <p className={`text-dark-grey/40 text-sm mt-0.5 ${dosisFont.className}`}>Fermé le week-end</p>
                 </div>
 
-                <div className="border-t border-darkGrey/10 pt-4">
-                  <p className={`text-darkGrey/50 text-xs font-semibold uppercase tracking-widest mb-3 ${dosisFont.className}`}>Réseaux sociaux</p>
+                <div className="border-t border-dark-grey/10 pt-4">
+                  <p className={`text-dark-grey/50 text-xs font-semibold uppercase tracking-widest mb-3 ${dosisFont.className}`}>Réseaux sociaux</p>
                   <div className="flex gap-3">
                     <a href="https://www.facebook.com/p/Charpente-Menuiserie-Durand-100063695462775/?locale=fr_FR" target="_blank" rel="noopener noreferrer"
                       className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary group transition-colors duration-300">

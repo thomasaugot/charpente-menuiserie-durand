@@ -6,15 +6,16 @@ export function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export default function ServicePage({ params }) {
-  const service = services[params.slug];
+export default async function ServicePage({ params }) {
+  const { slug } = await params;
+  const service = services[slug];
 
   if (!service) {
     notFound();
   }
 
   const serviceCards = slugs
-    .filter((slug) => slug !== params.slug)
+    .filter((serviceSlug) => serviceSlug !== slug)
     .map((slug) => ({
       slug,
       title: services[slug].title,

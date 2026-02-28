@@ -35,7 +35,7 @@ const Footer = () => {
   }, [inView]);
 
   return (
-    <footer ref={ref} id="footer" className="bg-darkGrey text-white">
+    <footer ref={ref} id="footer" className="bg-dark-grey text-white">
       <div className="h-1 w-full bg-primary" />
 
       {isVisible && (
@@ -51,7 +51,7 @@ const Footer = () => {
               <h3 className={`${dosisFont.className} text-primary text-2xl font-semibold`}>
                 Charpente Menuiserie Durand
               </h3>
-              <p className={`${dosisFont.className} text-lightGrey text-base leading-relaxed`}>
+              <p className={`${dosisFont.className} text-light-grey text-base leading-relaxed`}>
                 Artisan charpentier et menuisier en Loire-Atlantique, spécialisé dans
                 la charpente traditionnelle, industrielle et les menuiseries sur mesure.
               </p>
@@ -65,7 +65,7 @@ const Footer = () => {
               <div className="flex flex-col gap-3">
                 <div className="flex items-start gap-3">
                   <FaLocationDot size={17} className="text-primary mt-1 shrink-0" />
-                  <div className={`${dosisFont.className} text-base text-lightGrey`}>
+                  <div className={`${dosisFont.className} text-base text-light-grey`}>
                     <p>Sarl Charpente Menuiserie Durand</p>
                     <p>Z.A. la Pommeraie, Rue des Indes</p>
                     <p>44780 Missillac</p>
@@ -80,7 +80,7 @@ const Footer = () => {
                 >
                   <MdEmail size={17} className="text-primary shrink-0" />
                   <span
-                    className={`${dosisFont.className} text-base text-lightGrey group-hover:text-white transition-colors`}
+                    className={`${dosisFont.className} text-base text-light-grey group-hover:text-white transition-colors`}
                   >
                     charpente.menuiserie.durand@gmail.com
                   </span>
@@ -91,7 +91,7 @@ const Footer = () => {
                 >
                   <FaPhoneAlt size={15} className="text-primary shrink-0" />
                   <span
-                    className={`${dosisFont.className} text-base text-lightGrey group-hover:text-white transition-colors`}
+                    className={`${dosisFont.className} text-base text-light-grey group-hover:text-white transition-colors`}
                   >
                     +33 6 76 50 85 51
                   </span>
@@ -114,7 +114,7 @@ const Footer = () => {
                   <FaFacebook size={22} className="text-white" />
                 </div>
                 <span
-                  className={`${dosisFont.className} text-base text-lightGrey group-hover:text-white transition-colors`}
+                  className={`${dosisFont.className} text-base text-light-grey group-hover:text-white transition-colors`}
                 >
                   Facebook
                 </span>
@@ -129,7 +129,7 @@ const Footer = () => {
                   <FaInstagram size={22} className="text-white" />
                 </div>
                 <span
-                  className={`${dosisFont.className} text-base text-lightGrey group-hover:text-white transition-colors`}
+                  className={`${dosisFont.className} text-base text-light-grey group-hover:text-white transition-colors`}
                 >
                   Instagram
                 </span>
@@ -142,18 +142,18 @@ const Footer = () => {
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-5 text-center">
               <a
                 href="/politique-de-confidentialite"
-                className={`${dosisFont.className} text-sm text-lightGrey hover:text-white transition-colors`}
+                className={`${dosisFont.className} text-sm text-light-grey hover:text-white transition-colors`}
               >
                 Politique de Confidentialité
               </a>
               <a
                 href="/conditions-generales-utilisation"
-                className={`${dosisFont.className} text-sm text-lightGrey hover:text-white transition-colors`}
+                className={`${dosisFont.className} text-sm text-light-grey hover:text-white transition-colors`}
               >
                 Conditions Générales d&apos;Utilisation
               </a>
             </div>
-            <p className={`${dosisFont.className} text-sm text-lightGrey text-center`}>
+            <p className={`${dosisFont.className} text-sm text-light-grey text-center`}>
               &copy; 2020 – {currentYear} Sarl Charpente Menuiserie Durand. Site développé par{" "}
               <a
                 href="https://www.helloimtom.dev/fr"

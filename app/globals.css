@@ -1,9 +1,15 @@
-/* The next 3 imports refer to Tailwind's default settings and classes, to modify them, refer to them using
-@layer... as shown below */
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  --color-white: #ffffff;
+  --color-primary: #f37139;
+  --color-secondary: #ffbf00;
+  --color-light-grey: #d3d3d3;
+  --color-dark-grey: #3b3b3b;
+  --shadow-custom-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-custom-medium: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --shadow-custom-dark: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
 
 @keyframes marquee-left {
   0%   { transform: translateX(0); }
@@ -34,11 +40,6 @@
   }
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
 
 html,
 body {
@@ -50,11 +51,11 @@ body {
 @layer base {
   input,
   textarea {
-    @apply bg-lightGrey;
+    @apply bg-light-grey;
   }
 
   label {
-    @apply text-darkGrey block text-sm font-medium;
+    @apply text-dark-grey block text-sm font-medium;
   }
 }
 
@@ -94,7 +95,7 @@ body {
   left: 0;
   direction: rtl;
   z-index: -1;
-  @apply bg-darkGrey rounded-lg;
+  @apply bg-dark-grey rounded-lg;
   transition: all 0.3s ease;
 }
 
@@ -218,7 +219,7 @@ body {
 }
 
 .custom-pointer {
-  cursor: url("/assets/img/hammer-pointer.png"), auto;
+  cursor: auto;
 }
 
 .polygon {

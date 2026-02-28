@@ -59,8 +59,8 @@ const PopupForm = ({ isOpen, closeModal }) => {
     messageRef.current.value = "";
   };
 
-  const inputClass = `mt-2 pb-2 w-full bg-transparent border-0 border-b border-darkGrey/20 text-darkGrey placeholder-darkGrey/30 focus:outline-none focus:border-primary transition-colors duration-300 text-sm ${dosisFont.className}`;
-  const labelClass = `text-darkGrey/50 text-xs font-semibold uppercase tracking-widest ${dosisFont.className}`;
+  const inputClass = `mt-2 pb-2 w-full bg-transparent border-0 border-b border-dark-grey/20 text-dark-grey placeholder-dark-grey/30 focus:outline-none focus:border-primary transition-colors duration-300 text-sm ${dosisFont.className}`;
+  const labelClass = `text-dark-grey/50 text-xs font-semibold uppercase tracking-widest ${dosisFont.className}`;
 
   return (
     <div
@@ -78,7 +78,7 @@ const PopupForm = ({ isOpen, closeModal }) => {
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
           <div className="w-8 h-[2px] bg-primary shrink-0" />
-          <h2 className={`text-darkGrey font-bold text-2xl tracking-wider ${robotoFont.className}`}>
+          <h2 className={`text-dark-grey font-bold text-2xl tracking-wider ${robotoFont.className}`}>
             Demander un devis
           </h2>
         </div>
@@ -86,9 +86,9 @@ const PopupForm = ({ isOpen, closeModal }) => {
         {/* Close button */}
         <button
           onClick={closeModal}
-          className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-darkGrey/5 hover:bg-darkGrey/10 transition-colors duration-200"
+          className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-dark-grey/5 hover:bg-dark-grey/10 transition-colors duration-200"
         >
-          <svg className="h-4 w-4 text-darkGrey/60" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="h-4 w-4 text-dark-grey/60" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
             <path d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
@@ -121,7 +121,7 @@ const PopupForm = ({ isOpen, closeModal }) => {
           </button>
           <div className="h-6 mt-3">
             {stateMessage && (
-              <p className={`${dosisFont.className} text-darkGrey text-center text-sm font-semibold`}>
+              <p className={`${dosisFont.className} text-dark-grey text-center text-sm font-semibold`}>
                 {stateMessage}
               </p>
             )}

@@ -35,7 +35,7 @@ export default function PolitiqueDeConfidentialite() {
       <div className="max-w-5xl mx-auto">
         <Link
           href="/"
-          className={`${dosisFont.className} inline-flex items-center gap-2 text-darkGrey/75 hover:text-primary text-base tracking-widest uppercase transition-colors duration-200 mb-8`}
+          className={`${dosisFont.className} inline-flex items-center gap-2 text-dark-grey/75 hover:text-primary text-base tracking-widest uppercase transition-colors duration-200 mb-8`}
         >
           <FaArrowLeft size={12} />
           Retour a l&apos;accueil
@@ -45,16 +45,16 @@ export default function PolitiqueDeConfidentialite() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35, ease: "easeOut" }}
-          className="bg-white/88 backdrop-blur-sm border border-darkGrey/10 rounded-3xl shadow-xl p-6 md:p-10 lg:p-12"
+          className="bg-white/88 backdrop-blur-sm border border-dark-grey/10 rounded-3xl shadow-xl p-6 md:p-10 lg:p-12"
         >
           <p className={`${dosisFont.className} text-primary/90 text-sm uppercase tracking-widest mb-4`}>
             Informations legales
           </p>
-          <h1 className="text-darkGrey text-3xl md:text-4xl lg:text-5xl tracking-wide font-semibold leading-tight mb-6">
+          <h1 className="text-dark-grey text-3xl md:text-4xl lg:text-5xl tracking-wide font-semibold leading-tight mb-6">
             Politique de confidentialite
           </h1>
 
-          <p className={`${dosisFont.className} text-darkGrey/90 text-lg leading-relaxed mb-8`}>
+          <p className={`${dosisFont.className} text-dark-grey/90 text-lg leading-relaxed mb-8`}>
             Nous attachons une grande importance a la protection de vos donnees personnelles. Cette
             politique de confidentialite explique comment nous collectons, utilisons et protegeons
             vos informations lorsque vous utilisez notre site web.
@@ -62,18 +62,18 @@ export default function PolitiqueDeConfidentialite() {
 
           <div className="space-y-8">
             {sections.map((section) => (
-              <div key={section.title} className="pt-6 border-t border-darkGrey/10 first:border-t-0 first:pt-0">
-                <h2 className="text-darkGrey text-2xl font-semibold tracking-wide mb-3">
+              <div key={section.title} className="pt-6 border-t border-dark-grey/10 first:border-t-0 first:pt-0">
+                <h2 className="text-dark-grey text-2xl font-semibold tracking-wide mb-3">
                   {section.title}
                 </h2>
-                <p className={`${dosisFont.className} text-darkGrey/85 text-lg leading-relaxed`}>
+                <p className={`${dosisFont.className} text-dark-grey/85 text-lg leading-relaxed`}>
                   {section.content}
                 </p>
               </div>
             ))}
           </div>
 
-          <p className={`${dosisFont.className} text-darkGrey/85 text-lg leading-relaxed mt-8 pt-6 border-t border-darkGrey/10`}>
+          <p className={`${dosisFont.className} text-dark-grey/85 text-lg leading-relaxed mt-8 pt-6 border-t border-dark-grey/10`}>
             Si vous avez des questions concernant notre politique de confidentialite ou si vous
             souhaitez exercer vos droits en matiere de protection des donnees, veuillez nous
             contacter a l&apos;adresse suivante : charpente.menuiserie.durand@gmail.com, ou

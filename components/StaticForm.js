@@ -68,7 +68,7 @@ const StaticForm = () => {
     messageRef.current.value = "";
   };
 
-  const inputClass = `mt-2 pb-2 w-full !bg-transparent border-0 border-b-2 border-darkGrey/20 text-darkGrey placeholder-darkGrey/30 focus:outline-none focus:border-primary transition-colors duration-300 ${dosisFont.className}`;
+  const inputClass = `mt-2 pb-2 w-full !bg-transparent border-0 border-b-2 border-dark-grey/20 text-dark-grey placeholder-dark-grey/30 focus:outline-none focus:border-primary transition-colors duration-300 ${dosisFont.className}`;
 
   return (
     <form
@@ -78,7 +78,7 @@ const StaticForm = () => {
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         <div>
-          <label htmlFor="name" className={`${dosisFont.className} text-darkGrey/70 text-sm font-semibold tracking-wide`}>
+          <label htmlFor="name" className={`${dosisFont.className} text-dark-grey/70 text-sm font-semibold tracking-wide`}>
             Nom
           </label>
           <input
@@ -91,7 +91,7 @@ const StaticForm = () => {
           />
         </div>
         <div>
-          <label htmlFor="phone" className={`${dosisFont.className} text-darkGrey/70 text-sm font-semibold tracking-wide`}>
+          <label htmlFor="phone" className={`${dosisFont.className} text-dark-grey/70 text-sm font-semibold tracking-wide`}>
             Téléphone
           </label>
           <input
@@ -105,7 +105,7 @@ const StaticForm = () => {
         </div>
       </div>
       <div className="mb-4">
-        <label htmlFor="email" className={`${dosisFont.className} text-darkGrey/70 text-sm font-semibold tracking-wide`}>
+        <label htmlFor="email" className={`${dosisFont.className} text-dark-grey/70 text-sm font-semibold tracking-wide`}>
           Email
         </label>
         <input
@@ -118,7 +118,7 @@ const StaticForm = () => {
         />
       </div>
       <div className="mb-6">
-        <label htmlFor="message" className={`${dosisFont.className} text-darkGrey/70 text-sm font-semibold tracking-wide`}>
+        <label htmlFor="message" className={`${dosisFont.className} text-dark-grey/70 text-sm font-semibold tracking-wide`}>
           Message
         </label>
         <textarea
@@ -139,7 +139,7 @@ const StaticForm = () => {
         Envoyer le message
       </button>
       {stateMessage && (
-        <p className={`${dosisFont.className} text-darkGrey text-center text-sm font-semibold mt-3`}>
+        <p className={`${dosisFont.className} text-dark-grey text-center text-sm font-semibold mt-3`}>
           {stateMessage}
         </p>
       )}

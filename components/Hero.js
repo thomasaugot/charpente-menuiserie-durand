@@ -1,6 +1,6 @@
 "use client";
 
-import homeBg from "/assets/img/home.webp";
+import homeBg from "@/assets/img/home.webp";
 import localFont from "next/font/local";
 import { motion } from "framer-motion";
 import { FiChevronDown, FiArrowRight } from "react-icons/fi";
@@ -25,9 +25,12 @@ const Hero = () => {
       {/* Original overlay */}
       <div className="absolute inset-0 bg-white" style={{ opacity: 0.3, zIndex: 0 }} />
 
-      {/* Background image */}
-      <div
+      {/* Background image with subtle zoom-in entrance */}
+      <motion.div
         className="absolute inset-0"
+        initial={{ scale: 1.12 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
         style={{
           backgroundImage: `url(${homeBg.src})`,
           backgroundPosition: "center",
@@ -49,7 +52,7 @@ const Hero = () => {
           custom={0}
         >
           <div className="w-10 h-[2px] bg-primary shrink-0" />
-          <span className="text-darkGrey text-sm font-semibold tracking-[0.2em] uppercase font-mono">
+          <span className="text-dark-grey text-sm font-semibold tracking-[0.2em] uppercase font-mono">
             Charpente · Menuiserie · Ossature bois
           </span>
         </motion.div>
@@ -67,7 +70,7 @@ const Hero = () => {
 
         {/* Subtitle */}
         <motion.p
-          className="text-darkGrey text-2xl md:text-3xl font-light tracking-wide"
+          className="text-dark-grey text-2xl md:text-3xl font-light tracking-wide"
           variants={fadeUp}
           initial="hidden"
           animate="visible"
@@ -103,7 +106,7 @@ const Hero = () => {
       {/* Scroll indicator */}
       <motion.a
         href="#about"
-        className="absolute bottom-8 right-8 md:right-16 lg:right-24 flex flex-col items-center gap-1 text-darkGrey/40 hover:text-primary transition-colors duration-300"
+        className="absolute bottom-8 right-8 md:right-16 lg:right-24 flex flex-col items-center gap-1 text-dark-grey/40 hover:text-primary transition-colors duration-300"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.1, duration: 0.6 }}

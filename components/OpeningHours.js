@@ -18,13 +18,13 @@ const OpeningHours = () => (
   <div className="bg-white rounded-2xl shadow-xl p-8 flex flex-col h-full">
     <div className="flex items-center gap-3 mb-5">
       <div className="w-8 h-[2px] bg-primary shrink-0" />
-      <h3 className="text-darkGrey font-bold text-2xl tracking-wider">Horaires</h3>
+      <h3 className="text-dark-grey font-bold text-2xl tracking-wider">Horaires</h3>
     </div>
-    <div className="flex flex-col divide-y divide-darkGrey/10">
+    <div className="flex flex-col divide-y divide-dark-grey/10">
       {hours.map(({ day, time }) => (
         <div key={day} className="flex justify-between py-2.5">
-          <p className={`text-darkGrey/70 font-medium text-base ${dosisFont.className}`}>{day}</p>
-          <p className={`font-semibold text-base ${time === "Fermé" ? "text-darkGrey/30" : "text-primary"} ${dosisFont.className}`}>
+          <p className={`text-dark-grey/70 font-medium text-base ${dosisFont.className}`}>{day}</p>
+          <p className={`font-semibold text-base ${time === "Fermé" ? "text-dark-grey/30" : "text-primary"} ${dosisFont.className}`}>
             {time}
           </p>
         </div>
