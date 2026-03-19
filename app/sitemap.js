@@ -9,10 +9,7 @@ export default function sitemap() {
     lastModified: LAST_BUILD,
     changeFrequency: "monthly",
     priority: 0.8,
-    images: services[slug].images.map((img) => ({
-      url: `${BASE_URL}${img}`,
-      title: services[slug].title,
-    })),
+    images: services[slug].images.map((img) => `${BASE_URL}${img}`),
   }));
 
   return [
@@ -22,8 +19,8 @@ export default function sitemap() {
       changeFrequency: "weekly",
       priority: 1.0,
       images: [
-        { url: `${BASE_URL}/img/home.webp`, title: "Charpente Menuiserie Durand — Missillac" },
-        { url: `${BASE_URL}/img/logo.png`,  title: "Logo Charpente Menuiserie Durand" },
+        `${BASE_URL}/img/home.webp`,
+        `${BASE_URL}/img/logo.png`,
       ],
     },
     ...serviceEntries,

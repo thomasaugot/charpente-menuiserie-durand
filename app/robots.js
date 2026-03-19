@@ -22,13 +22,12 @@ export default function robots() {
         allow: '/',
         disallow: [
           '/api/',           // Block API endpoints
-          '/admin/',         // Block admin areas  
-          '/_next/',         // Block Next.js internals
+          '/admin/',         // Block admin areas
           '/private/',       // Block private content
         ],
         crawlDelay: 1,       // Be respectful to server
       },
-      
+
       // Give Google special treatment (no crawl delay)
       {
         userAgent: 'Googlebot',
@@ -36,7 +35,6 @@ export default function robots() {
         disallow: [
           '/api/',
           '/admin/',
-          '/_next/',
           '/private/',
         ],
       },
